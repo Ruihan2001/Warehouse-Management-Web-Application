@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+            function countDown(){
+                var time=document.getElementById("Time");
+                if(time.innerHTML == 0){
+                    window.location.href="/main_page";
+                }
+                else{
+                    time.innerHTML=time.innerHTML-1;
+                }
+            }
+            window.setInterval("countDown()",1000);
+        </script>
+</head>
+<body>
+<p>ITEM DOES NOT EXISTS!</p>
+<p id="Time">1</p>
+</body>
+</html>

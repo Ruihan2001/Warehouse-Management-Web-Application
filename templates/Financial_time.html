@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>Warehouse</title>
+
+    	<!--<link href="C:\Users\14127\Desktop\课设\css\bootstrap.min.css" rel="stylesheet"> -->
+
+		  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="/static/css/font-awesome.css">
+    	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+      <script  src="/static/css/echarts.min.js"></script>
+
+      <style> #search
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          width: 15%;
+          background-color:#ffffff;
+          position: fixed;
+          /* height: 100%; 侧边栏高度 */
+          /* overflow: auto; */
+        }
+
+        li a {
+          display: block;
+          color: #000;
+          padding: 8px 16px;
+          text-decoration: none;
+        }
+
+        li a.active:not(.hover){
+          background-color: #4CAF50;
+          color: white;
+        }
+
+        li a:hover:not(.active) {
+          background-color: #555;
+          color: white;
+
+        }
+        .ModalButton{
+          font-size: 25px;
+          font-family: 'Courier New', Courier, monospace;
+        }
+      </style>
+
+      <!--回到顶部按钮css-->
+      <style> #back
+      body{margin:40px;}
+
+      .btn-circle {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding: 6px 0;
+        font-size: 12px;
+        line-height: 1.428571429;
+        border-radius: 15px;
+      }
+      .btn-circle.btn-lg {
+        width: 50px;
+        height: 50px;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.33;
+        border-radius: 25px;
+      }
+      .btn-circle.btn-xl {
+        width: 70px;
+        height: 70px;
+        padding: 10px 16px;
+        font-size: 24px;
+        line-height: 1.33;
+        border-radius: 35px;
+      }
+
+      .myTable-container {
+	      width: 1000px;
+      	height: 500px;
+}
+
+</style>
+
+
+
+
+
+
+	</head>
+
+  <body>
+
+<!--导航条-->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+			  <div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				  <span class="sr-only">Toggle navigation</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="Main_Page_manager.html">{{ session['in_city'] }} Repository</a>
+			  </div>
+
+			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				  <p class="navbar-text">Signed in as {{ session['username'] }}({{session['username_level']}})</p>
+					   <form class="navbar-form navbar-right">
+						   <a href="/logout">
+						  <button type="button" class="btn btn-default">Logout</button>
+						   </a>
+					   </form>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
+
+
+
+		<div class="container-fluid"></div>
+        <div class="row"></div>
+
+            <!--侧边栏-->
+            <div id='search' class="col-md-2" style="background">
+
+                <ul id="main-nav" class="nav nav-stacked">
+                  <li><a href="/main_page"><i class="glyphicon glyphicon-home">&nbsp;</i> Warehouse</a></li>
+                  <li><a class="active" href="/financial"><i class="glyphicon glyphicon-stats">&nbsp;</i> Financial Statistics </a></li>
+                  <li><a href="/communication"><i class="glyphicon glyphicon-transfer">&nbsp;</i> Communication </a></li>
+                    <li><a href="/visualization"><i class="glyphicon glyphicon-plane">&nbsp;</i> Visualization </a></li>
+                </ul>
+
+
+            </div>
+
+            <!--主界面-->
+            <div class="col-sm-7 col-md-9">
+              <div class="col-md-1">
+                    <ul id="info1">
+                        <li>
+                            <a><i class="fa fa-info-circle" style="color: #000000"></i></a>
+                            <div style="z-index: 1;position: absolute;width: 220px;height: 100px;padding:8px;line-height: 20px;background-color: pink;display: none;">
+                                This chart shows the situation of a category of goods in different quarters.
+                                The Y-axis is the ratio of expenses to budget.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <h1>Search by selecting from the Categories dropdown</h1>
+
+
+              <div class="container" style="height:650px,width:700px ;">
+                <ul id="myTab" class="nav nav-tabs">
+                  <li class="active"><a href="#tab1" data-toggle="tab">Fruit</a></li>
+                  <li><a href="#tab2" data-toggle="tab">Seafood</a></li>
+                  <li><a href="#tab3" data-toggle="tab">Digital Products</a></li>
+                  <li><a href="#tab4" data-toggle="tab">Clothing</a></li>
+                  <li><a href="#tab5" data-toggle="tab">Furniture</a></li>
+                  <li><a href="#tab6" data-toggle="tab">Books</a></li>
+                  <li><a href="#tab7" data-toggle="tab">Appliances</a></li>
+                  <li><a href="#tab8" data-toggle="tab">Daily Necessities</a></li>
+                  <li><a href="#tab9" data-toggle="tab">Medicine</a></li>
+
+
+                </ul>
+             
+                <div id="myTabContent" class="tab-content">
+                  <div class="tab-pane  active" id="tab1">
+                    <div id="tab1-container" class="myTable-container"></div>
+                  </div>
+                  <div class="tab-pane " id="tab2">
+                    <div id="tab2-container" class="myTable-container"></div>
+                  </div>
+                  <div class="tab-pane " id="tab3">
+                    <div id="tab3-container" class="myTable-container"></div>
+                  </div>
+                  <div class="tab-pane " id="tab4">
+                    <div id="tab4-container" class="myTable-container"></div>
+                  </div>
+                  <div class="tab-pane " id="tab5">
+                    <div id="tab5-container" class="myTable-container"></div>
+                  </div>
+                  <div class="tab-pane " id="tab6">
+                    <div id="tab6-container" class="myTable-container"></div>
+                  </div>
+                  <div class="tab-pane " id="tab7">
+                    <div id="tab7-container" class="myTable-container"></div>
+                  </div>
+                  <div class="tab-pane " id="tab8">
+                    <div id="tab8-container" class="myTable-container"></div>
+                  </div>
+                  <div class="tab-pane " id="tab9">
+                    <div id="tab9-container" class="myTable-container"></div>
+                  </div>
+                  
+                </div>
+              </div>
+        
+                <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+                <script type="text/javascript">
+                  var $tab1 = document.getElementById("tab1-container");
+                  var $tab2 = document.getElementById("tab2-container");
+                  var $tab3 = document.getElementById("tab3-container");
+                  var $tab4 = document.getElementById("tab4-container");
+                  var $tab5 = document.getElementById("tab5-container");
+                  var $tab6 = document.getElementById("tab6-container");
+                  var $tab7 = document.getElementById("tab7-container");
+                  var $tab8 = document.getElementById("tab8-container");
+                  var $tab9 = document.getElementById("tab9-container");
+                  var myChart1 = echarts.init($tab1);
+                  var app = {};
+                  
+                  var option1;
+                  var option2;
+                  var option3;
+                  var option4;
+                  var option5;
+                  var option6;
+                  var option7;
+                  var option8;
+                  var option9;
+            
+                  option1 = {
+                     
+                     tooltip: {
+                         trigger: 'axis'
+                     },
+                    
+                 
+                     toolbox: {
+                         show: true,
+                         feature: {
+                             dataZoom: {
+                                 yAxisIndex: 'none'
+                             },
+                             dataView: {readOnly: false},
+                             magicType: {type: ['line', 'bar']},
+                             restore: {},
+                             saveAsImage: {}
+                         }
+                     },
+                     xAxis: {
+                         type: 'category',
+                         boundaryGap: false,
+                         data: ["Quarter 1th","Quarter 2nd","Quarter 3rd","Quarter 4th"]
+                     },
+                     yAxis: {
+                         type: 'value',
+                         axisLabel: {
+                             formatter: '{value} '
+                         }
+                     },
+                     series: [
+                         {
+                             name: 'Ratio',
+                             type: 'line',
+                             data: [0.8,1,1.2,0.3],
+                             markLine: {
+                                 data: [
+                                     {type: 'average', name: 'Ave'},
+                                     [{
+                                         symbol: 'none',
+                                         x: '90%',
+                                         yAxis: 'max'
+                                     }, {
+                                         symbol: 'circle',
+                                         label: {
+                                             position: 'start',
+                                             formatter: 'Max'
+                                         },
+                                         type: 'max',
+                                         name: 'MAX'
+                                     }]
+                                 ]
+                             }
+                         }
+                     ]
+                 };
+
+                  /*$.get('data.json').done(function (data) {
+
+                       option1.setOption({
+                            xAxis: {
+                                data: data.categories
+                            },
+                            series: [{
+                                // 根据名字对应到相应的系列
+                                name: '销量',
+                                data: data.data
+                            }]
+                        });
+                     });*/
+
+                  option2 = {
+                     
+                     tooltip: {
+                         trigger: 'axis'
+                     },
+                    
+                 
+                     toolbox: {
+                         show: true,
+                         feature: {
+                             dataZoom: {
+                                 yAxisIndex: 'none'
+                             },
+                             dataView: {readOnly: false},
+                             magicType: {type: ['line', 'bar']},
+                             restore: {},
+                             saveAsImage: {}
+                         }
+                     },
+                     xAxis: {
+                         type: 'category',
+                         boundaryGap: false,
+                         data: ["Quarter 1st","Quarter 2nd","Quarter 3rd","Quarter 4th"]
+                     },
+                     yAxis: {
+                         type: 'value',
+                         axisLabel: {
+                             formatter: '{value} '
+                         }
+                     },
+                     series: [
+                         {
+                             name: 'Ratio',
+                             type: 'line',
+                             data: [1.2,1.5,0.8,1.3],
+                             markLine: {
+                                 data: [
+                                     {type: 'average', name: 'Ave'},
+                                     [{
+                                         symbol: 'none',
+                                         x: '90%',
+                                         yAxis: 'max'
+                                     }, {
+                                         symbol: 'circle',
+                                         label: {
+                                             position: 'start',
+                                             formatter: 'Max'
+                                         },
+                                         type: 'max',
+                                         name: 'MAX'
+                                     }]
+                                 ]
+                             }
+                         }
+                     ]
+                 };
+
+                  option3 = {
+                     
+                     tooltip: {
+                         trigger: 'axis'
+                     },
+                    
+                 
+                     toolbox: {
+                         show: true,
+                         feature: {
+                             dataZoom: {
+                                 yAxisIndex: 'none'
+                             },
+                             dataView: {readOnly: false},
+                             magicType: {type: ['line', 'bar']},
+                             restore: {},
+                             saveAsImage: {}
+                         }
+                     },
+                     xAxis: {
+                         type: 'category',
+                         boundaryGap: false,
+                         data: ["Quarter 1st","Quarter 2nd","Quarter 3rd","Quarter 4th"]
+                     },
+                     yAxis: {
+                         type: 'value',
+                         axisLabel: {
+                             formatter: '{value} '
+                         }
+                     },
+                     series: [
+                         {
+                             name: 'Ratio',
+                             type: 'line',
+                             data: [0.7,1.5,1.2,0.9],
+                             markLine: {
+                                 data: [
+                                     {type: 'average', name: 'Ave'},
+                                     [{
+                                         symbol: 'none',
+                                         x: '90%',
+                                         yAxis: 'max'
+                                     }, {
+                                         symbol: 'circle',
+                                         label: {
+                                             position: 'start',
+                                             formatter: 'Max'
+                                         },
+                                         type: 'max',
+                                         name: 'MAX'
+                                     }]
+                                 ]
+                             }
+                         }
+                     ]
+                 }; 
+
+                  option4 = {
+                     
+                     tooltip: {
+                         trigger: 'axis'
+                     },
+                    
+                 
+                     toolbox: {
+                         show: true,
+                         feature: {
+                             dataZoom: {
+                                 yAxisIndex: 'none'
+                             },
+                             dataView: {readOnly: false},
+                             magicType: {type: ['line', 'bar']},
+                             restore: {},
+                             saveAsImage: {}
+                         }
+                     },
+                     xAxis: {
+                         type: 'category',
+                         boundaryGap: false,
+                         data: ["Quarter 1st","Quarter 2nd","Quarter 3rd","Quarter 4th"]
+                     },
+                     yAxis: {
+                         type: 'value',
+                         axisLabel: {
+                             formatter: '{value} '
+                         }
+                     },
+                     series: [
+                         {
+                             name: 'Ratio',
+                             type: 'line',
+                             data: [1.3,1.2,0.8,1],
+                             markLine: {
+                                 data: [
+                                     {type: 'average', name: 'Ave'},
+                                     [{
+                                         symbol: 'none',
+                                         x: '90%',
+                                         yAxis: 'max'
+                                     }, {
+                                         symbol: 'circle',
+                                         label: {
+                                             position: 'start',
+                                             formatter: 'Max'
+                                         },
+                                         type: 'max',
+                                         name: 'MAX'
+                                     }]
+                                 ]
+                             }
+                         }
+                     ]
+                 };
+
+                  option5 = {
+                     
+                     tooltip: {
+                         trigger: 'axis'
+                     },
+                    
+                 
+                     toolbox: {
+                         show: true,
+                         feature: {
+                             dataZoom: {
+                                 yAxisIndex: 'none'
+                             },
+                             dataView: {readOnly: false},
+                             magicType: {type: ['line', 'bar']},
+                             restore: {},
+                             saveAsImage: {}
+                         }
+                     },
+                     xAxis: {
+                         type: 'category',
+                         boundaryGap: false,
+                         data: ["Quarter 1st","Quarter 2nd","Quarter 3rd","Quarter 4th"]
+                     },
+                     yAxis: {
+                         type: 'value',
+                         axisLabel: {
+                             formatter: '{value} '
+                         }
+                     },
+                     series: [
+                         {
+                             name: 'Ratio',
+                             type: 'line',
+                             data: [0.5,1.2,1,0.6],
+                             markLine: {
+                                 data: [
+                                     {type: 'average', name: 'Ave'},
+                                     [{
+                                         symbol: 'none',
+                                         x: '90%',
+                                         yAxis: 'max'
+                                     }, {
+                                         symbol: 'circle',
+                                         label: {
+                                             position: 'start',
+                                             formatter: 'Max'
+                                         },
+                                         type: 'max',
+                                         name: 'MAX'
+                                     }]
+                                 ]
+                             }
+                         }
+                     ]
+                 };
+
+                  option6 = {
+                     
+                     tooltip: {
+                         trigger: 'axis'
+                     },
+                    
+                 
+                     toolbox: {
+                         show: true,
+                         feature: {
+                             dataZoom: {
+                                 yAxisIndex: 'none'
+                             },
+                             dataView: {readOnly: false},
+                             magicType: {type: ['line', 'bar']},
+                             restore: {},
+                             saveAsImage: {}
+                         }
+                     },
+                     xAxis: {
+                         type: 'category',
+                         boundaryGap: false,
+                         data: ["Quarter 1st","Quarter 2nd","Quarter 3rd","Quarter 4th"]
+                     },
+                     yAxis: {
+                         type: 'value',
+                         axisLabel: {
+                             formatter: '{value} '
+                         }
+                     },
+                     series: [
+                         {
+                             name: 'Ratio',
+                             type: 'line',
+                             data: [1.5,1.2,1.3,0.9],
+                             markLine: {
+                                 data: [
+                                     {type: 'average', name: 'Ave'},
+                                     [{
+                                         symbol: 'none',
+                                         x: '90%',
+                                         yAxis: 'max'
+                                     }, {
+                                         symbol: 'circle',
+                                         label: {
+                                             position: 'start',
+                                             formatter: 'Max'
+                                         },
+                                         type: 'max',
+                                         name: '最高点'
+                                     }]
+                                 ]
+                             }
+                         }
+                     ]
+                 };
+
+                  option7 = {
+                     
+                     tooltip: {
+                         trigger: 'axis'
+                     },
+                    
+                 
+                     toolbox: {
+                         show: true,
+                         feature: {
+                             dataZoom: {
+                                 yAxisIndex: 'none'
+                             },
+                             dataView: {readOnly: false},
+                             magicType: {type: ['line', 'bar']},
+                             restore: {},
+                             saveAsImage: {}
+                         }
+                     },
+                     xAxis: {
+                         type: 'category',
+                         boundaryGap: false,
+                         data: ["Quarter 1st","Quarter 2nd","Quarter 3rd","Quarter 4th"]
+                     },
+                     yAxis: {
+                         type: 'value',
+                         axisLabel: {
+                             formatter: '{value} '
+                         }
+                     },
+                     series: [
+                         {
+                             name: 'Ratio',
+                             type: 'line',
+                             data: [0.9,0.8,1,0.8],
+                             markLine: {
+                                 data: [
+                                     {type: 'average', name: 'Ave'},
+                                     [{
+                                         symbol: 'none',
+                                         x: '90%',
+                                         yAxis: 'max'
+                                     }, {
+                                         symbol: 'circle',
+                                         label: {
+                                             position: 'start',
+                                             formatter: 'Max'
+                                         },
+                                         type: 'max',
+                                         name: '最高点'
+                                     }]
+                                 ]
+                             }
+                         }
+                     ]
+                 };
+
+                  option8 = {
+                     
+                     tooltip: {
+                         trigger: 'axis'
+                     },
+                    
+                 
+                     toolbox: {
+                         show: true,
+                         feature: {
+                             dataZoom: {
+                                 yAxisIndex: 'none'
+                             },
+                             dataView: {readOnly: false},
+                             magicType: {type: ['line', 'bar']},
+                             restore: {},
+                             saveAsImage: {}
+                         }
+                     },
+                     xAxis: {
+                         type: 'category',
+                         boundaryGap: false,
+                         data: ["Quarter 1st","Quarter 2nd","Quarter 3rd","Quarter 4th"]
+                     },
+                     yAxis: {
+                         type: 'value',
+                         axisLabel: {
+                             formatter: '{value} '
+                         }
+                     },
+                     series: [
+                         {
+                             name: 'Ratio',
+                             type: 'line',
+                             data: [1,0.8,1.1,1.5],
+                             markLine: {
+                                 data: [
+                                     {type: 'average', name: 'Ave'},
+                                     [{
+                                         symbol: 'none',
+                                         x: '90%',
+                                         yAxis: 'max'
+                                     }, {
+                                         symbol: 'circle',
+                                         label: {
+                                             position: 'start',
+                                             formatter: 'Max'
+                                         },
+                                         type: 'max',
+                                         name: '最高点'
+                                     }]
+                                 ]
+                             }
+                         }
+                     ]
+                 };
+
+                  option9 = {
+                     
+                     tooltip: {
+                         trigger: 'axis'
+                     },
+                    
+                 
+                     toolbox: {
+                         show: true,
+                         feature: {
+                             dataZoom: {
+                                 yAxisIndex: 'none'
+                             },
+                             dataView: {readOnly: false},
+                             magicType: {type: ['line', 'bar']},
+                             restore: {},
+                             saveAsImage: {}
+                         }
+                     },
+                     xAxis: {
+                         type: 'category',
+                         boundaryGap: false,
+                         data: ["Quarter 1st","Quarter 2nd","Quarter 3rd","Quarter 4th"]
+                     },
+                     yAxis: {
+                         type: 'value',
+                         axisLabel: {
+                             formatter: '{value} '
+                         }
+                     },
+                     series: [
+                         {
+                             name: 'Ratio',
+                             type: 'line',
+                             data: [1.2,1.7,0.9,0.8],
+                             markLine: {
+                                 data: [
+                                     {type: 'average', name: 'Ave'},
+                                     [{
+                                         symbol: 'none',
+                                         x: '90%',
+                                         yAxis: 'max'
+                                     }, {
+                                         symbol: 'circle',
+                                         label: {
+                                             position: 'start',
+                                             formatter: 'Max'
+                                         },
+                                         type: 'max',
+                                         name: '最高点'
+                                     }]
+                                 ]
+                             }
+                         }
+                     ]
+                 };
+                 var myChart1 = echarts.init($tab1);
+                 myChart1.setOption(option1);
+                 $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+                    		var activeTab = $(e.target)[0].hash;
+                        if (activeTab == "#tab2") {
+                          echarts.dispose($tab2);
+                          var mychart2 = echarts.init($tab2);
+                          mychart2.setOption(option2);
+                        } else if (activeTab == "#tab3") {
+                          echarts.dispose($tab3);
+                          var mychart3 = echarts.init($tab3);
+                          mychart3.setOption(option3);
+                        }else if (activeTab == "#tab4") {
+                          echarts.dispose($tab4);
+                          var mychart4 = echarts.init($tab4);
+                          mychart4.setOption(option4);
+                        }else if (activeTab == "#tab5") {
+                          echarts.dispose($tab5);
+                          var mychart5 = echarts.init($tab5);
+                          mychart5.setOption(option5);
+                        }else if (activeTab == "#tab6") {
+                          echarts.dispose($tab6);
+                          var mychart6 = echarts.init($tab6);
+                          mychart6.setOption(option6);
+                        }else if (activeTab == "#tab7") {
+                          echarts.dispose($tab7);
+                          var mychart7 = echarts.init($tab7);
+                          mychart7.setOption(option7);
+                        }else if (activeTab == "#tab8") {
+                          echarts.dispose($tab8);
+                          var mychart8 = echarts.init($tab8);
+                          mychart8.setOption(option8);
+                        }else if (activeTab == "#tab9") {
+                          echarts.dispose($tab9);
+                          var mychart9 = echarts.init($tab9);
+                          mychart9.setOption(option9);
+                        }
+                      });
+                  
+                     window.onload = function(){ //弹出info框
+                        var list = document.getElementById('info1');
+
+                        var lis = list.getElementsByTagName('li');
+
+                        for(var i=0;i<lis.length;i++){//遍历li元素
+                            lis[i].onmouseover = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'block';
+                            };
+                            lis[i].onmouseout = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'none';
+                            }
+                        }
+                    }
+
+
+                          </script>
+            </div>
+
+  </body>
+</html>

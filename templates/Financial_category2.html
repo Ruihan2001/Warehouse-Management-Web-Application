@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>Warehouse</title>
+
+    	<!--<link href="C:\Users\14127\Desktop\课设\css\bootstrap.min.css" rel="stylesheet"> -->
+
+		
+    	
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Mukta:wght@500&family=Raleway:wght@300&display=swap" rel="stylesheet">
+          
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>  
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>  
+    <script src="https://code.highcharts.com/modules/data.js"></script> 
+      
+
+      <style> #search
+        
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          width: 15%;
+          background-color:#f2f7f3; 
+          position: fixed;
+          height: 0%; /*侧边栏高度 */
+          
+          /* overflow: auto; */
+        }
+        
+        li a {
+          display: block;
+          color: #000;
+          padding: 8px 16px;
+          text-decoration: none;
+        }
+        
+        li a.active:not(.hover){
+          background-color: #4CAF50;
+          color: white;
+        }
+        
+        li a:hover:not(.active) { 
+          background-color: #555;
+          color: white;
+        
+        }
+        .ModalButton{
+          font-size: 25px;
+          font-family: 'Courier New', Courier, monospace;
+        }
+        #main-nav{
+            padding: 50px;
+            margin: 50px;
+        }
+      </style>
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+	</head>
+
+  <body>
+
+    <!--导航条-->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+			  <div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				  <span class="sr-only">Toggle navigation</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="Main_Page_manager.html">{{ session['in_city'] }} Repository</a>
+			  </div>
+		  
+			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				  <p class="navbar-text">Signed in as {{ session['username'] }}({{session['username_level']}})</p>
+					   <form class="navbar-form navbar-right">
+						   <a href="/logout">
+						  <button type="button" class="btn btn-default">Logout</button>
+						   </a>
+					   </form>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
+		
+
+
+		<div class="container-fluid"></div>
+        <div class="row"></div>
+        
+            <!--侧边栏-->
+            <div id='search' class="col-md-2" style="background">
+              
+                <ul id="main-nav" class="nav nav-stacked">
+                  <li><a  href="/main_page"><i class="glyphicon glyphicon-home">&nbsp;</i> Warehouse</a></li>
+                  <li><a class="active" href="/financial"><i class="glyphicon glyphicon-stats">&nbsp;</i> Financial Statistics </a></li>
+                  <li><a href="/communication"><i class="glyphicon glyphicon-transfer">&nbsp;</i> Communication </a></li>
+                    <li><a href="/visualization"><i class="glyphicon glyphicon-plane">&nbsp;</i> Visualization </a></li>
+                </ul>
+
+
+            </div>
+
+            
+
+            <!--主界面-->
+            <div class="col-sm-7 col-md-10">
+             <div class="col-md-1">
+                    <ul id="info1">
+                        <li>
+                            <a><i class="fa fa-info-circle" style="color: #000000"></i></a>
+                            <div style="z-index: 1;position: absolute;width: 350px;height: 160px;padding:8px;line-height: 20px;background-color: pink;display: none;">
+                                This chart shows the situation of 4 quarters in 2020.
+                                ① Click on the quarter, a bar chart shows different categories during that quarter. The Y-axis is the ratio of expenses to budget.</br>
+                                ② Click on the category, a pie chart shows the proportion of different goods of that category during the quarter.
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <h1>Search by selecting from the quarters</h1>
+
+              <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+                <script>
+                 /*function requestData(){
+                    $.post('/financial_category_comparison'), {
+                    }.done(function (data){
+                        var series = chart.series[0]
+                        console.log()
+                }*/
+
+
+
+
+
+                var chart = null;
+                $(function () {
+                   chart = Highcharts.chart('container',{
+                        chart: {
+                            type: 'column',
+                            /*events:{
+                           load:requestData()
+                          }*/
+                        },
+                        title: {
+                            text: 'Quarters'
+                        },
+                        xAxis: {
+                            type: 'category'
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'budget/cost'
+                            },
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        plotOptions: {
+                            series: {
+                                borderWidth: 0,
+                                dataLabels: {
+                                    enabled: true
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Quarters',
+                            colorByPoint: true,
+                            data: [{
+                                name: '1st',
+                                y: 1,
+                                drilldown: 'Quarter 1st'
+                            }, {
+                                name: '2nd',
+                                y: 0.8,
+                                drilldown: 'Quarter 2nd'
+                            }, {
+                                name: '3rd',
+                                y: 1.4,
+                                drilldown: 'Quarter 3rd'
+                            }, {
+                                name: '4st',
+                                y: 0.6,
+                                drilldown: 'Quarter 4th'
+                            }]
+                        }],
+                        drilldown: {
+                    series: [{
+                        name: 'Quarter 1',
+                        colorByPoint: true,
+                        id: 'Quarter 1st',
+                        data: [
+                            {name: 'Fruit', id: 'Fruit', y: 4, drilldown: 'fruit_1'},
+                            {name: 'Seafood', id: 'Seafood', y: 2, drilldown: 'seafood_1'},
+                            {name: 'Digital Products', id: 'Digital Products', y: 1, drilldown: 'digital products_1'},
+                            {name: 'Clothing', id: 'Clothing', y: 6, drilldown: 'clothing_1'},
+                            {name: 'Furniture', id: 'Furniture', y: 2, drilldown: 'furniture_1'},
+                            {name: 'Books', id: 'Books', y: 3, drilldown: 'books_1'},
+                            {name: 'Appliances', id: 'Appliances', y: 5, drilldown: 'appliances_1'},
+                            {name: 'Daily Necessities', id: 'Daily Necessities', y: 4, drilldown: 'daily necessities_1'},
+                            {name: 'Medicine', id: 'Medicine', y: 3, drilldown: 'medicine_1'}]
+                    }, {
+                        type: 'pie',
+                        id: 'fruit_1',
+                        data: [
+                            ['Apple', 4],
+                            ['Orange', 3],
+                            ['Banana', 2],
+                            ['Strawberry', 3],
+                            ['Pear', 1],
+                            ['Watermelon', 2],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'seafood_1',
+                        data: [
+                            ['Jellyfish', 3],
+                            ['Conch', 2],
+                            ['Oyster', 4],
+                            ['Crab', 3],
+                            ['Golden carp', 1],
+                            ['Tuna', 4],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'digital products_1',
+                        data: [
+                            ['Mobile phone', 4],
+                            ['Tablet', 2],
+                            ['camera', 4],
+                            ['computer', 3]
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'clothing_1',
+                        data: [
+                            ['T-shirt', 4],
+                            ['Trousers', 2],
+                            ['Coat', 2],
+                            ['Hat', 2]
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'furniture_1',
+                        data: [
+                            ['Table', 4],
+                            ['Chair', 2],
+                            ['Bed', 3],
+                            ['Sofa', 2],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'books_1',
+                        data: [
+                            ['Computer Network', 4],
+                            ['Java', 2],
+                            ['C++', 3],
+                            ['Discrete mathematics', 3],
+                            ['University physics',4]
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'appliances_1',
+                        data: [
+                            ['Apple', 3],
+                            ['Orange', 2],
+                            ['Banana', 1],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'daily necessities_1',
+                        data: [
+                            ['TV', 3],
+                            ['Microwave oven', 4],
+                            ['Air conditioner', 2],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'medicine_1',
+                        data: [
+                            ['Cold medicine', 4],
+                            ['Stomach medicine', 5],
+                            ['painkillers', 3],
+                        ]
+                    },{
+                        name: 'Quarter 2',
+                        colorByPoint: true,
+                        id: 'Quarter 2nd',
+                        data: [
+                            {name: 'Fruit', id: 'Fruit', y: 4, drilldown: 'fruit_2'},
+                            {name: 'Seafood', id: 'Seafood', y: 2, drilldown: 'seafood_2'},
+                            {name: 'Digital Products', id: 'Digital Products', y: 1, drilldown: 'digital products_2'},
+                            {name: 'Clothing', id: 'Clothing', y: 6, drilldown: 'clothing_2'},
+                            {name: 'Furniture', id: 'Furniture', y: 2, drilldown: 'furniture_2'},
+                            {name: 'Books', id: 'Books', y: 3, drilldown: 'books_2'},
+                            {name: 'Appliances', id: 'Appliances', y: 5, drilldown: 'appliances_2'},
+                            {name: 'Daily Necessities', id: 'Daily Necessities', y: 4, drilldown: 'daily necessities_2'},
+                            {name: 'Medicine', id: 'Medicine', y: 3, drilldown: 'medicine_2'}]
+                    }, {
+                        type: 'pie',
+                        id: 'fruit_2',
+                        data: [
+                            ['Apple', 4],
+                            ['Orange', 3],
+                            ['Banana', 2],
+                            ['Strawberry', 3],
+                            ['Pear', 1],
+                            ['Watermelon', 2],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'seafood_2',
+                        data: [
+                            ['Jellyfish', 3],
+                            ['Conch', 2],
+                            ['Oyster', 4],
+                            ['Crab', 3],
+                            ['Golden carp', 1],
+                            ['Tuna', 4],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'digital products_2',
+                        data: [
+                            ['Mobile phone', 4],
+                            ['Tablet', 2],
+                            ['camera', 4],
+                            ['computer', 3]
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'clothing_2',
+                        data: [
+                            ['T-shirt', 4],
+                            ['Trousers', 2],
+                            ['Coat', 2],
+                            ['Hat', 2]
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'furniture_2',
+                        data: [
+                            ['Table', 4],
+                            ['Chair', 2],
+                            ['Bed', 3],
+                            ['Sofa', 2],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'books_2',
+                        data: [
+                            ['Computer Network', 4],
+                            ['Java', 2],
+                            ['C++', 3],
+                            ['Discrete mathematics', 3],
+                            ['University physics',4]
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'appliances_2',
+                        data: [
+                            ['Apple', 3],
+                            ['Orange', 2],
+                            ['Banana', 1],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'daily necessities_2',
+                        data: [
+                            ['TV', 3],
+                            ['Microwave oven', 4],
+                            ['Air conditioner', 2],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'medicine_2',
+                        data: [
+                            ['Cold medicine', 4],
+                            ['Stomach medicine', 5],
+                            ['painkillers', 3],
+                        ]
+                    },{
+                        name: 'Quarter 3',
+                        colorByPoint: true,
+                        id: 'Quarter 3rd',
+                        data: [
+                            {name: 'Fruit', id: 'Fruit', y: 4, drilldown: 'fruit_3'},
+                            {name: 'Seafood', id: 'Seafood', y: 2, drilldown: 'seafood_3'},
+                            {name: 'Digital Products', id: 'Digital Products', y: 1, drilldown: 'digital products_3'},
+                            {name: 'Clothing', id: 'Clothing', y: 6, drilldown: 'clothing_3'},
+                            {name: 'Furniture', id: 'Furniture', y: 2, drilldown: 'furniture_3'},
+                            {name: 'Books', id: 'Books', y: 3, drilldown: 'books_3'},
+                            {name: 'Appliances', id: 'Appliances', y: 5, drilldown: 'appliances_3'},
+                            {name: 'Daily Necessities', id: 'Daily Necessities', y: 4, drilldown: 'daily necessities_3'},
+                            {name: 'Medicine', id: 'Medicine', y: 3, drilldown: 'medicine_3'}]
+                    }, {
+                        type: 'pie',
+                        id: 'fruit_3',
+                        data: [
+                            ['Apple', 4],
+                            ['Orange', 3],
+                            ['Banana', 2],
+                            ['Strawberry', 3],
+                            ['Pear', 1],
+                            ['Watermelon', 2],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'seafood_3',
+                        data: [
+                            ['Jellyfish', 3],
+                            ['Conch', 2],
+                            ['Oyster', 4],
+                            ['Crab', 3],
+                            ['Golden carp', 1],
+                            ['Tuna', 4],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'digital products_3',
+                        data: [
+                            ['Mobile phone', 4],
+                            ['Tablet', 2],
+                            ['camera', 4],
+                            ['computer', 3]
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'clothing_3',
+                        data: [
+                            ['T-shirt', 4],
+                            ['Trousers', 2],
+                            ['Coat', 2],
+                            ['Hat', 2]
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'furniture_3',
+                        data: [
+                            ['Table', 4],
+                            ['Chair', 2],
+                            ['Bed', 3],
+                            ['Sofa', 2],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'books_3',
+                        data: [
+                            ['Computer Network', 4],
+                            ['Java', 2],
+                            ['C++', 3],
+                            ['Discrete mathematics', 3],
+                            ['University physics',4]
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'appliances_3',
+                        data: [
+                            ['Apple', 3],
+                            ['Orange', 2],
+                            ['Banana', 1],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'daily necessities_3',
+                        data: [
+                            ['TV', 3],
+                            ['Microwave oven', 4],
+                            ['Air conditioner', 2],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'medicine_3',
+                        data: [
+                            ['Cold medicine', 4],
+                            ['Stomach medicine', 5],
+                            ['painkillers', 3],
+                        ]
+                    },{
+                        name: 'Quarter 4',
+                        colorByPoint: true,
+                        id: 'Quarter 4th',
+                        data: [
+                            {name: 'Fruit', id: 'Fruit', y: 4, drilldown: 'fruit_4'},
+                            {name: 'Seafood', id: 'Seafood', y: 2, drilldown: 'seafood_4'},
+                            {name: 'Digital Products', id: 'Digital Products', y: 1, drilldown: 'digital products_4'},
+                            {name: 'Clothing', id: 'Clothing', y: 6, drilldown: 'clothing_4'},
+                            {name: 'Furniture', id: 'Furniture', y: 2, drilldown: 'furniture_4'},
+                            {name: 'Books', id: 'Books', y: 3, drilldown: 'books_4'},
+                            {name: 'Appliances', id: 'Appliances', y: 5, drilldown: 'appliances_4'},
+                            {name: 'Daily Necessities', id: 'Daily Necessities', y: 4, drilldown: 'daily necessities_4'},
+                            {name: 'Medicine', id: 'Medicine', y: 3, drilldown: 'medicine_4'}]
+                    }, {
+                        type: 'pie',
+                        id: 'fruit_4',
+                        data: [
+                            ['Apple', 4],
+                            ['Orange', 3],
+                            ['Banana', 2],
+                            ['Strawberry', 3],
+                            ['Pear', 1],
+                            ['Watermelon', 2],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'seafood_4',
+                        data: [
+                            ['Jellyfish', 3],
+                            ['Conch', 2],
+                            ['Oyster', 4],
+                            ['Crab', 3],
+                            ['Golden carp', 1],
+                            ['Tuna', 4],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'digital products_4',
+                        data: [
+                            ['Mobile phone', 4],
+                            ['Tablet', 2],
+                            ['camera', 4],
+                            ['computer', 3]
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'clothing_4',
+                        data: [
+                            ['T-shirt', 4],
+                            ['Trousers', 2],
+                            ['Coat', 2],
+                            ['Hat', 2]
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'furniture_4',
+                        data: [
+                            ['Table', 4],
+                            ['Chair', 2],
+                            ['Bed', 3],
+                            ['Sofa', 2],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'books_4',
+                        data: [
+                            ['Computer Network', 4],
+                            ['Java', 2],
+                            ['C++', 3],
+                            ['Discrete mathematics', 3],
+                            ['University physics',4]
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'appliances_4',
+                        data: [
+                            ['Apple', 3],
+                            ['Orange', 2],
+                            ['Banana', 1],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'daily necessities_4',
+                        data: [
+                            ['TV', 3],
+                            ['Microwave oven', 4],
+                            ['Air conditioner', 2],
+                        ]
+                    }, {
+                        type: 'pie',
+                        id: 'medicine_4',
+                        data: [
+                            ['Cold medicine', 4],
+                            ['Stomach medicine', 5],
+                            ['painkillers', 3],
+                        ]
+                    }]
+                }
+            });
+              console.log(chart.series[0].data)
+                });
+
+
+
+
+
+
+
+
+                window.onload = function(){ //弹出info框
+                        var list = document.getElementById('info1');
+
+                        var lis = list.getElementsByTagName('li');
+
+                        for(var i=0;i<lis.length;i++){//遍历li元素
+                            lis[i].onmouseover = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'block';
+                            };
+                            lis[i].onmouseout = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'none';
+                            }
+                        }
+                    }
+
+
+
+              </script>
+
+
+
+
+
+
+
+
+
+
+             
+
+
+
+
+
+            
+          
+          
+          
+            
+          
+          
+          
+          
+          
+          
+          </div>
+                
+
+
+		
+    
+  </body>
+</html>

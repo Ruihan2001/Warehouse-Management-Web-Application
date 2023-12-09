@@ -1,0 +1,22 @@
+#search1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+button{
+    border:0;
+    background: none;
+    text-transform: uppercase;
+    color:black;
+    font-weight: bold;
+    position: relative;
+    outline: none;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+button:hover{
+   background: teal;
+   color:white;
+}

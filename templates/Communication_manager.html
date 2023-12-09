@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>Warehouse</title>
+
+    	<!--<link href="C:\Users\14127\Desktop\课设\css\bootstrap.min.css" rel="stylesheet"> -->
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/button.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Mukta:wght@500&family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link href="/static/css/toastr.css" rel="stylesheet" />
+   <script src="/static/css/toastr.min.js"></script>
+
+
+
+      <script>
+            function openModal(id){
+    $(id).modal("show");
+  }
+
+  $(function(){
+        function initTableCheckbox() {
+          var $thr = $('table thead tr');
+				var $checkAllTh = $('<th><input type="checkbox" id="checkAll" name="checkAll"/></th>');
+
+				$thr.prepend($checkAllTh);
+
+            var $checkAll = $thr.find('input');
+				    $checkAll.click(function(event){
+
+					      $tbr.find('input').prop('checked',$(this).prop('checked'));
+
+					      if ($(this).prop('checked')) {
+						        $tbr.find('input').parent().parent().addClass('warning');
+				       	} else{
+
+                $tbr.find('input').parent().parent().removeClass('warning');
+					      }
+
+					      event.stopPropagation();
+				     });
+
+				     $checkAllTh.click(function(){
+				  	     $(this).find('input').click();
+				     });
+             var $tbr = $('table tbody tr');
+
+        var $checkItemTd = $('<td><input type="checkbox" id = "check" name="checkItem" onclick="test(this)"/></td>');
+
+				$tbr.prepend($checkItemTd);
+
+				$tbr.find('input').click(function(event){
+
+					  $(this).parent().parent().toggleClass('warning');
+
+					  $checkAll.prop('checked',$tbr.find('input:checked').length == $tbr.length ? true : false);
+
+					  event.stopPropagation();
+				});
+
+			}
+			initTableCheckbox();
+		});
+
+        var name_list =[];
+           function test(o) {
+                if (!o.checked) {
+                 return name_list=[];
+           }
+           var tr = o.parentNode.parentNode;
+           var tds = tr.cells;
+           var str = "";
+           var str2 = "";
+               str = str + tds[1].innerHTML ;
+               str2 = str2 + tds[5].innerHTML;
+           var amount_list = [str,str2];
+              if (name_list.indexOf(str) <= -1) {
+                  name_list.push(amount_list);
+              }
+               console.log(name_list);
+          }
+
+          $(function(){
+              var $trm = $('#list_of_objects')
+              $('#list_alter').click(function (){
+                  for (var i=0; i< name_list.length; i++) {
+                      if ($trm.text().indexOf(name_list[i][0]) <= -1){
+                         $trm.prepend('<tr><td name="pro_name">'+name_list[i][0]+'</td>'+'<td>storage amount: '+name_list[i][1]+'</td>'+'<td>amount:<input placeholder="valid number" type="number"></td></tr>');
+                      }
+                  }
+
+              })
+              $('#close_modal').click(function (){
+                  $trm.html('')
+              })
+          })
+
+
+
+
+
+      </script>
+
+      <style> #search
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          width: 15%;
+          background-color:#f2f7f3;
+          position: fixed;
+          height: 0%; /*侧边栏高度 */
+
+          /* overflow: auto; */
+        }
+
+        li a {
+          display: block;
+          color: #000;
+          padding: 8px 16px;
+          text-decoration: none;
+        }
+
+        li a.active:not(.hover){
+          background-color: #4CAF50;
+          color: white;
+        }
+
+        li a:hover:not(.active) {
+          background-color: #555;
+          color: white;
+
+        }
+
+      </style>
+
+
+	</head>
+
+  <body>
+
+    <!--导航条-->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+			  <div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				  <span class="sr-only">Toggle navigation</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="Main_Page_manager.html">{{ session['in_city'] }} Repository</a>
+			  </div>
+
+			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				  <p class="navbar-text">Signed in as {{ session['username'] }}({{session['username_level']}})</p>
+					   <form class="navbar-form navbar-right">
+						   <a href="/logout">
+						  <button type="button" class="btn btn-default">Logout</button>
+						   </a>
+					   </form>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
+
+
+
+		<div class="container-fluid"></div>
+        <div class="row"></div>
+
+            <!--侧边栏-->
+            <div id='search' class="col-md-2" style="background">
+
+                <ul id="main-nav" class="nav nav-stacked">
+                  <li><a href="/main_page"><i class="glyphicon glyphicon-home">&nbsp;</i> Warehouse</a></li>
+                  <li><a href="/financial"><i class="glyphicon glyphicon-stats">&nbsp;</i> Financial Statistics </a></li>
+                  <li><a class="active" href="/communication"><i class="glyphicon glyphicon-transfer">&nbsp;</i> Communication </a></li>
+                    <li><a href="/visualization"><i class="glyphicon glyphicon-plane">&nbsp;</i> Visualization </a></li>
+                </ul>
+
+
+            </div>
+
+  <!--主界面-->
+            <div class="col-sm-7 col-md-10">
+
+                <!--搜索框-->
+                <div class="col-sm-2 col-md-7">
+                <div class="input-group">
+                    <form id="search_bar" action="/search" method="POST">
+                      <input style= "height: 34px; width:530px" name="search_database" type="text" class="form-control" placeholder="Search for commodity...">
+                     <span class="input-group-btn">
+                      <button id="search_button" class="btn btn-default" type="Submit">Go</button>
+                     </span>
+                    </form>
+                </div>
+                </div>
+                <!--模态框-->
+                <div class="ModalButton"><button type="button" id="list_alter" onclick="openModal('#mainModal')"><i class="glyphicon glyphicon-list"></i> List</button></div>
+                <div class="modal fade" id="mainModal" tabindex="-1" role="dialog">
+                  <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                               <h4 class="modal-title">List of Commodities</h4>
+                          </div>
+                         <div class="modal-body" >
+
+                           <table class="table table-hover">
+                               <tbody id="list_of_objects">
+
+                               </tbody>
+                           </table>
+                           <textarea id="order_comments" class="form-control" rows="3" cols="50"></textarea>
+                             <br>
+                             Operation<select id="operation">
+                             <option>Stock-in</option>
+                             <option>Stock-out</option>
+                             <option>Other</option>
+                         </select>&nbsp;
+                             Repository<select id="repository">
+                             <option>Beijing</option>
+                             <option>Shanghai</option>
+                             <option>Zhuhai</option>
+                             <option>Guangzhou</option>
+                             <option>HeiLongjiang</option>
+                             <option>Sichuan</option>
+                         </select>
+                             <br>
+                            <br> Work assigned to: <input id="order_person" placeholder="User id">
+                         </div>
+ <div class="modal-footer">
+     <button type="button" id="close_modal" class="btn btn-default" data-dismiss="modal">Close</button>
+     <button type='Submit' id="add_save" class="btn btn-primary" data-dismiss="modal">Submit Order</button>
+
+ </div>
+
+                      </div>
+                  </div>
+                </div>
+
+               <h2 class="sub-header">Please select the items you want to alter.</h2>
+                <div class="table-responsive"> <!--响应式表格-->
+                  <table class="table table-hover"> <!--悬停表格-->
+                    <thead>
+                      <tr>
+                        <th>Item</th>
+                        <th>Category</th>
+                        <th>Region</th>
+                          <th>Section</th>
+                        <th>Amount</th>
+                        <th>Person in charge</th>
+                        <th>Remarks</th>
+                          <th>Storage Time</th>
+
+                      </tr>
+                    </thead>
+                    <tbody id = "database_table">
+
+                    {% for c in lst %}
+                    <tr>
+                     <td name="pro_name">{{ c.pro_name }}</td>
+                    <td>{{ c.pro_class }}</td>
+                    <td>{{ c.pro_region }}</td>
+                    <td>{{ c.re_section}}</td>
+                    <td>{{ c.pro_amount }}</td>
+                    <td>{{ c.pro_charge }}</td>
+                    <td>{{ c.pro_remark }}</td>
+                        <td>{{ c.sto_time }}</td>
+                     </tr>
+
+
+
+
+                    {% endfor %}
+
+
+
+
+
+
+
+
+
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+
+
+
+  </body>
+</html>
+
+
+
+
+
+

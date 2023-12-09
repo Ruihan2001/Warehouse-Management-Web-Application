@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>Warehouse</title>
+
+    	<!--<link href="C:\Users\14127\Desktop\课设\css\bootstrap.min.css" rel="stylesheet"> -->
+
+		
+    	
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/button.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Mukta:wght@500&family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link href="/static/css/toastr.css" rel="stylesheet" />
+   <script src="/static/css/toastr.min.js"></script>
+
+
+          
+      <script>
+            function openModal(id){
+    $(id).modal("show");
+  }
+
+  $('#Save_fixed_time_budgets').click(function(){
+      toastr.options.positionClass = 'toast-top-center';
+      toastr.success("Successfully saved settings!");
+  } )
+
+      </script>
+
+      <style> #search
+        
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          width: 15%;
+          background-color:#f2f7f3; 
+          position: fixed;
+          height: 0%; /*侧边栏高度 */
+          
+          /* overflow: auto; */
+        }
+        
+        li a {
+          display: block;
+          color: #000;
+          padding: 8px 16px;
+          text-decoration: none;
+        }
+        
+        li a.active:not(.hover){
+          background-color: #4CAF50;
+          color: white;
+        }
+        
+        li a:hover:not(.active) { 
+          background-color: #555;
+          color: white;
+        
+        }
+        .ModalButton{
+          font-size: 25px;
+          font-family: 'Courier New', Courier, monospace;
+        }
+      </style>
+
+      
+
+
+
+
+
+
+	</head>
+
+  <body>
+
+    <!--导航条-->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+			  <div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				  <span class="sr-only">Toggle navigation</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="Main_Page_manager.html">{{ session['in_city'] }} Repository</a>
+			  </div>
+		  
+			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				  <p class="navbar-text">Signed in as {{ session['username'] }}({{session['username_level']}})</p>
+					   <form class="navbar-form navbar-right">
+						   <a href="/logout">
+						  <button type="button" class="btn btn-default">Logout</button>
+						   </a>
+					   </form>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
+		
+
+
+		<div class="container-fluid"></div>
+        <div class="row"></div>
+        
+            <!--侧边栏-->
+            <div id='search' class="col-md-2" style="background">
+              
+                <ul id="main-nav" class="nav nav-stacked">
+                 <li><a href="/main_page"><i class="glyphicon glyphicon-home">&nbsp;</i> Warehouse</a></li>
+                  <li><a class="active" href="/financial"><i class="glyphicon glyphicon-stats">&nbsp;</i> Financial Statistics </a></li>
+                  <li><a href="/communication"><i class="glyphicon glyphicon-transfer">&nbsp;</i> Communication </a></li>
+                    <li><a href="/visualization"><i class="glyphicon glyphicon-plane">&nbsp;</i> Visualization </a></li>
+                </ul>
+
+
+            </div>
+
+            
+
+            <!--主界面-->
+            <div id = "search1" class="col-sm-7 col-md-10">
+
+                <div class="modal fade" id="budget" tabindex="-1" role="dialog">
+                  <div class="modal-dialog" role="document">
+                      <form method="post" action="/fixed_time_budget">
+                     <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                               <h4 class="modal-title">Budget</h4>
+                          </div>
+                          <div class="modal-body">
+
+
+                                  <br>
+                                  <h4 class="modal-title">Quarter</h4>
+                                  <br>
+                                  <label class="control-label">Fruit</label>
+                                   <input type="number" class="form-control" name="Fruit_budget_1" id="updatelocation">
+                                  <label class="control-label">Seafood</label>
+                                   <input type="number" class="form-control" name="Seafood_budget_1" id="updatelocation">
+                                  <label class="control-label">Digital Products</label>
+                                   <input type="number" class="form-control" name="Digital_budget_1" id="updatelocation">
+                                  <label class="control-label">Clothing</label>
+                                   <input type="number" class="form-control" name="Clothing_budget_1" id="updatelocation">
+                                  <label class="control-label">Furniture</label>
+                                   <input type="number" class="form-control" name="Furniture_budget_1" id="updatelocation">
+                                  <label class="control-label">Books</label>
+                                   <input type="number" class="form-control" name="Books_budget_1" id="updatelocation">
+                                  <label class="control-label">Appliances</label>
+                                   <input type="number" class="form-control" name="Appliances_budget_1" id="updatelocation">
+                                  <label class="control-label">Daily Necessities</label>
+                                   <input type="number" class="form-control" name="Necessities_budget_1" id="updatelocation">
+                                  <label class="control-label">Medicine</label>
+                                   <input type="number" class="form-control" name="Medicine_budget_1" id="updatelocation">
+
+
+
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button id="Save_fixed_time_budgets" type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                      </form>
+                  </div>
+                </div>
+
+
+              <a href="#">
+                <button type="button" style="font-size:50px" onclick="openModal('#budget')" id="b1"> Budget </br><i style="font-size:150px" class="fa fa-search"></i> </button>
+              </a>
+              <a href="/financial_category">
+                <button type="button" style="font-size:50px" id="b2" > Category </br><i style="font-size:150px" class="fa fa-list-ul"></i> </button>
+              </a>
+              <a href="/financial_time">
+                <button type="button" style="font-size:50px" > &nbsp;&nbsp;Time &nbsp;&nbsp; </br><i style="font-size:150px" class="fa fa-clock-o"></i> </button>
+              </a>
+              
+
+            </div>
+                
+
+
+		
+    
+  </body>
+</html>

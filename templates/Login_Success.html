@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+            function countDown(){
+                var time=document.getElementById("Time");
+                if(time.innerHTML == 0){
+                    window.location.href="/main_page";
+                }
+                else{
+                    time.innerHTML=time.innerHTML-1;
+                }
+            }
+            window.setInterval("countDown()",500);
+        </script>
+    <title>Login_Success</title>
+</head>
+    <body>
+    LOGIN SUCCESSFUL!<p id="Time" hidden="hidden">1</p>
+     </body>
+
+</html>

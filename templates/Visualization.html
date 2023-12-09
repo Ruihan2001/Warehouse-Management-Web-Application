@@ -1,0 +1,2029 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>index</title>
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <link rel="stylesheet" href="/static/css/comon0.css">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+       <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+
+
+    <script>
+        function openModal(id){
+            //打开模态框
+            console.log(id)
+           
+        }
+    </script>
+        </head>
+
+<style>
+    .container1 {
+        width: 520px;
+        height: 600px;
+        margin: auto;
+        position: absolute;
+        /* overflow: auto; */
+        left:500px;
+    }
+</style>
+
+
+
+
+<style type="text/css" id="button">  /*按钮*/
+		.demo{
+			height: 400px;
+			min-height: 400px;
+		}
+		.pad-15{
+		    padding: 15px 0;
+		}
+
+		.btn{
+		    color: #fff;
+		    text-transform: uppercase;
+		    border-radius: 0;
+		    padding-left: 60px;
+		    position: relative;
+		    transform: translateZ(0px);
+		    transition: all 0.5s ease 0s;
+		}
+		.btn:after{
+		    content: "";
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    bottom: 0;
+		    right: 0;
+		    background: #fff;
+		    z-index: -1;
+		    transform: scaleX(0);
+		    transform-origin: 100% 50% 0;
+		    transition: all 0.5s ease-out 0s;
+		}
+		.btn:hover:after{
+		    transform: scaleX(1);
+		    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+		}
+		.btn span{
+		    width: 40px;
+		    height: 100%;
+		    line-height: 40px;
+		    background: #fff;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    transition: all 0.3s linear 0s;
+		}
+		.btn span:after{
+		    content: "";
+		    display: block;
+		    width: 10px;
+		    height: 10px;
+		    background: #fff;
+		    margin: auto 0;
+		    position: absolute;
+		    top: 0;
+		    right: -6px;
+		    bottom: 0;
+		    transform: rotate(45deg);
+		    transition: all 0.3s linear 0s;
+		}
+
+		.btn.red{
+		    border: 1px solid #fe6d6d;
+		    background: #fe6d6d;
+		}
+		.btn.red:hover,
+		.btn.red span{
+		    color: #fe6d6d;
+		}
+		.btn.red:hover span,
+		.btn.red:hover span:after{
+		    background: #fe6d6d;
+		}
+		.btn.blue{
+		    border: 1px solid #3bb4e5;
+		    background: #3bb4e5;
+		}
+		.btn.blue:hover,
+		.btn.blue span{
+		    color: #3bb4e5;
+		}
+		.btn.blue:hover span,
+		.btn.blue:hover span:after{
+		    background: #3bb4e5;
+		}
+		.btn.orange{
+		    border: 1px solid #ee955b;
+		    background: #ee955b;
+		}
+		.btn.orange:hover,
+		.btn.orange span{
+		    color: #ee955b;
+		}
+		.btn.orange:hover span,
+		.btn.orange:hover span:after{
+		    background: #ee955b;
+		}
+		.btn.green{
+		    border: 1px solid #79d799;
+		    background: #79d799;
+		}
+		.btn.green:hover,
+		.btn.green span{
+		    color: #79d799;
+		}
+		.btn.green:hover span,
+		.btn.green:hover span:after{
+		    background: #79d799;
+		}
+		.btn:hover span{
+		    color: #fff;
+		}
+		@media only screen and (max-width: 767px){
+		    .btn{ margin-bottom: 20px; }
+		}
+</style>
+
+
+
+<style type="progress/css"> #progress  /*进度条*/
+.demo{
+	padding: 2em 0;
+}
+.progress{
+	height: 7px;
+	background: #e3e3e3;
+	border-radius: 0;
+	box-shadow: none;
+	/*margin: 20px 0 20px;*/
+	overflow: visible;
+	position: relative;
+}
+.progress .progress-title{
+	padding: 7px 10px;
+	margin: 0;
+	background: #393a3d;
+	border-radius: 5px 0 0 5px;
+	box-shadow: 0 7px 7px rgba(0,0,0,0.4);
+	font-size: 18px;
+	font-weight: 700;
+	color: #fff;
+	text-transform: uppercase;
+	position: absolute;
+	top: -13px;
+	left: 0;
+	z-index: 1;
+}
+.progress .progress-title:after{
+	content: "";
+	border-left: 17px solid #393a3d;
+	border-top: 17px solid transparent;
+	border-bottom: 17px solid transparent;
+	position: absolute;
+	top: 0;
+	right: -17px;
+}
+.progress .progress-bar{
+	box-shadow: none;
+	border-radius: 0;
+	position: relative;
+	-webkit-animation: animate-positive 2s;
+	animation: animate-positive 2s;
+}
+.progress .progress-bar:after{
+	content: "";
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+	background: #fff;
+	position: absolute;
+	right: -5px;
+	top: -6px;
+}
+.progress .progress-value{
+	width: 45px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 3px;
+	background: #393a3d;
+	box-shadow: 0 5px 5px rgba(0,0,0,0.4);
+	font-size: 15px;
+	font-weight: 700;
+	color: #fff;
+	text-align: center;
+	position: absolute;
+	bottom: 30px;
+	right: -17px;
+}
+.progress .progress-value:after{
+	content: "";
+	border-top: 7px solid #393a3d;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	position: absolute;
+	bottom: -7px;
+	left: 35%;
+}
+.progress.green .progress-bar:after{ border: 5px solid #21da9a; }
+.progress.pink .progress-bar:after{ border: 5px solid #ff1170; }
+.progress.blue .progress-bar:after{ border: 5px solid #294bdc; }
+.progress.yellow .progress-bar:after{ border: 5px solid #ffa900; }
+@-webkit-keyframes animate-positive{
+	0% { width: 0; }
+}
+@keyframes animate-positive{
+	0% { width: 0; }
+}
+</style>
+
+
+
+
+<style type="text/css">/*圆形进度条*/
+		.demo{
+			padding: 2em;
+			min-height: 350px;
+		}
+		.progress{
+                  width: 70px; /*圆圈大小*/
+                  height: 70px;
+                  line-height: 150px;
+                  background: none;
+                  /*margin: 0px;
+                  box-shadow: none; */
+                  position: relative;
+					/*left:300px;*/
+  					/*top:250px;*/
+              }
+              .progress:after{
+                  content: "";
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 50%;
+                  /*border: 2px solid #fff;*/
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+              }
+              .progress > span{
+                  width: 50%;
+                  height: 100%;
+                  /* overflow: hidden; */
+                  position: absolute;
+                  top: 0;
+                  z-index: 1;
+              }
+              .progress .progress-left{
+                  left: 0;
+              }
+              .progress .progress-bar{
+                  width: 100%;
+                  height: 100%;
+                  background: none;
+                  border-width: 2px;
+                  border-style: solid;
+                  position: absolute;
+                  top: 0;
+              }
+              .progress .progress-left .progress-bar{
+                  left: 100%;
+                  border-top-right-radius: 80px;
+                  border-bottom-right-radius: 80px;
+                  border-left: 0;
+                  -webkit-transform-origin: center left;
+                  transform-origin: center left;
+              }
+              .progress .progress-right{
+                  right: 0;
+              }
+              .progress .progress-right .progress-bar{
+                  left: -100%;
+                  border-top-left-radius: 80px;
+                  border-bottom-left-radius: 80px;
+                  border-right: 0;
+                  -webkit-transform-origin: center right;
+                  transform-origin: center right;
+                  animation: loading-1 1.8s linear forwards;
+              }
+              .progress .progress-value{
+                  width: 85%;
+                  height: 85%;
+                  border-radius: 50%;
+                  border: 2px solid #ebebeb;
+                  font-size: 22px;	/*字的大小*/
+                  line-height: 50px; /*字的高度*/
+                  text-align: center;
+                  position: absolute;
+                  top: 7.5%;
+                  left: 7.5%;
+              }
+              .progress.blue .progress-bar{
+                  border-color: #049dff;
+              }
+              .progress.blue .progress-value{
+                  color: #049dff;
+              }
+              .progress.blue .progress-left .progress-bar{
+                  animation: loading-2 1.5s linear forwards 1.8s;
+              }
+              .progress.yellow .progress-bar{
+                  border-color: #fdba04;
+              }
+              .progress.yellow .progress-value{
+                  color: #fdba04;
+              }
+              .progress.yellow .progress-left .progress-bar{
+                  animation: loading-3 1s linear forwards 1.8s;
+              }
+              .progress.pink .progress-bar{
+                  border-color: #ed687c;
+              }
+              .progress.pink .progress-value{
+                  color: #ed687c;
+              }
+              .progress.pink .progress-left .progress-bar{
+                  animation: loading-4 0.4s linear forwards 1.8s;
+              }
+              .progress.green .progress-bar{
+                  border-color: #1abc9c;
+              }
+              .progress.green .progress-value{
+                  color: #1abc9c;
+              }
+              .progress.green .progress-left .progress-bar{
+                  animation: loading-5 1.2s linear forwards 1.8s;
+              }
+              @keyframes loading-1{
+                  0%{
+                      -webkit-transform: rotate(0deg);
+                      transform: rotate(0deg);
+                  }
+                  100%{
+                      -webkit-transform: rotate(180deg);
+                      transform: rotate(180deg);
+                  }
+              }
+              @keyframes loading-2{
+                  0%{
+                      -webkit-transform: rotate(0deg);
+                      transform: rotate(0deg);
+                  }
+                  100%{
+                      -webkit-transform: rotate(144deg);
+                      transform: rotate(144deg);
+                  }
+              }
+              @keyframes loading-3{
+                  0%{
+                      -webkit-transform: rotate(0deg);
+                      transform: rotate(0deg);
+                  }
+                  100%{
+                      -webkit-transform: rotate(90deg);
+                      transform: rotate(90deg);
+                  }
+              }
+              @keyframes loading-4{
+                  0%{
+                      -webkit-transform: rotate(0deg);
+                      transform: rotate(0deg);
+                  }
+                  100%{
+                      -webkit-transform: rotate(36deg);
+                      transform: rotate(36deg);
+                  }
+              }
+              @keyframes loading-5{
+                  0%{
+                      -webkit-transform: rotate(0deg);
+                      transform: rotate(0deg);
+                  }
+                  100%{
+                      -webkit-transform: rotate(126deg);
+                      transform: rotate(126deg);
+                  }
+              }
+              @media only screen and (max-width: 990px){
+                  .progress{ margin-bottom: 20px; }
+              }
+	</style>
+
+
+
+
+<style>
+    .xpanel {
+        padding:15px;
+        height:100%;
+        min-height:170px;
+        background-size:100% 100%;
+        box-sizing:border-box;
+    }
+
+    /* tool */
+    .fill-h {height:100%;min-height:100%;}
+
+</style>
+
+
+
+
+<script>
+    $(window).load(function () {
+        $(".loading").fadeOut()
+    })
+
+
+    $(document).ready(function () {
+        var whei = $(window).width()
+        $("html").css({ fontSize: whei / 20 })
+        $(window).resize(function () {
+            var whei = $(window).width()
+            $("html").css({ fontSize: whei / 20 })
+        });
+    });
+</script>
+<script  src="/static/css/echarts.min.js"></script>
+<script language="JavaScript" src="/static/js/js.js"></script>
+<body>
+<!--    <div class="canvas" style="opacity: .2">-->
+<!--        <iframe frameborder="0" src="js/index.html" style="width: 100%; height: 100%"></iframe>-->
+<!--    </div>-->
+    <div class="loading">
+        <div class="loadbox"> <img src="/static/images/loading.gif">LOADING </div>
+    </div>
+    <div class="head">
+        <h1>Warehouse Visualization</h1>
+
+        <script>
+            var t = null;
+            t = setTimeout(time, 1000); 
+            function time() {
+                clearTimeout(t); 
+                dt = new Date();
+                var y = dt.getFullYear();
+                var mt = dt.getMonth() + 1;
+                var day = dt.getDate();
+                var h = dt.getHours(); 
+                var m = dt.getMinutes(); 
+                var s = dt.getSeconds(); 
+                document.getElementById("showTime").innerHTML = y + "年" + mt + "月" + day + "-" + h + "时" + m + "分" + s + "秒";
+                t = setTimeout(time, 1000);  
+            }
+
+        </script>
+
+
+        <style>
+        .map {
+            width: 500px;
+            height: 600px;
+            margin:100px;
+            {#position: fixed;#}
+            /* overflow: auto; */
+            left:1000px;
+        }
+    </style>
+
+
+    </div>
+
+    <div class="mainbox">
+        <ul class="clearfix">
+            <li>
+                 <!--板块一-->
+                    <div class="boxall" style="height: 2.8rem">
+
+                    <div class="col-md-1">
+                        <ul id="info1">
+                            <li>
+                                <a><i class="fa fa-info-circle" style="color: white"></i></a>
+                                <div style="z-index: 1;position: absolute;width: 200px;height: 100px;padding:8px;line-height: 20px;background-color: pink;display: none;">
+                                    Click here to go to the main system, which is the home page for the entire repository.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                        <div class="alltitle">Main Page</div>
+
+                        <div style="margin:35px 50px">
+		                    <a href="/main_page" class="btn btn-lg green" style="font-size:20px">
+		                        <span class="fa fa-home fa-lg"></span>Products List
+		                    </a>
+		                </div>
+
+                    </div>
+
+
+
+
+                <!--板块二-->
+                <div class="boxall" style="height: 2.8rem">
+
+                    <div class="col-md-1">
+                    <ul id="info2">
+                        <li>
+                            <a><i class="fa fa-info-circle" style="color: white"></i></a>
+                            <div style="z-index: 1;position: absolute;width: 200px;height: 80px;padding:8px;line-height: 20px;background-color: pink;display: none;">
+                                Click here to check the information of workers and managers.
+                            </div>
+                        </li>
+                    </ul>
+                    </div>
+
+                    <div class="alltitle">Personnel Management</div>
+
+                        <div style="margin:35px 5px">
+                            <button class="btn btn-lg blue"
+                                    data-toggle="modal" data-target="#mainModal" onclick="openModal('#mainModal')">
+                                    <span class="fa fa-user fa-lg"></span>Manager
+                            </button>
+                            <button class="btn btn-lg blue"
+                                    data-toggle="modal" data-target="#mainModal2" onclick="openModal('#mainModal2')">
+                                    <span class="fa fa-user-o fa-lg"></span>Worker
+                            </button>
+                        </div>
+                </div>
+
+                <div class="modal fade" id="mainModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>×</span></button>
+                                   <h4 class="modal-title">Manager</h4>
+                            </div>
+
+                                <div class="modal-body">
+                                <table>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Warehouse In Charge</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiantian</td>
+                                        <td>Zhuhai/Beijing</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Lv Junyi</td>
+                                        <td>Shanghai</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Gao Ruihan</td>
+                                        <td>Sichuan/Heilongjiang</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Zheng Yifan</td>
+                                        <td>Guangzhou</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Zhang Mingjia</td>
+                                        <td>Beijing</td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+                <div class="modal fade" id="mainModal2" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>×</span></button>
+                                   <h4 class="modal-title">Worker</h4>
+                            </div>
+
+                                <div class="modal-body">
+                                <table>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Tiantian</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Lv Junyi</td>
+
+                                        </tr>
+
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+
+            </div>
+
+
+                <!--板块三-->
+                <div class="boxall" style="height: 2.8rem">
+
+                <div class="col-md-1">
+                    <ul id="info3">
+                        <li>
+                            <a><i class="fa fa-info-circle" style="color: white"></i></a>
+                            <div style="z-index: 1;position: absolute;width: 200px;height: 80px;padding:8px;line-height: 20px;background-color: pink;display: none;">
+                                Click here to check the three-dimensional view of the warehouse.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                    <div class="alltitle">3D Map</div>
+                    <div style="margin:35px 50px">
+		                    <a href="/3Dmapping" class="btn btn-lg orange">
+		                        <span class="fa fa-camera-retro fa-lg"></span>3D Warehouse
+		                    </a>
+                    </div>
+                </div>
+
+
+
+
+            </li>
+            <li>
+                <div class="bar">
+                    <div class="barbox">
+                        <ul class="clearfix">
+                            <li class="pulll_left counter">39125</li>
+                            <li class="pulll_left counter">12693</li>
+                        </ul>
+                    </div>
+                    <div class="barbox2">
+                        <ul class="clearfix">
+                            <li class="pulll_left">2020 Stock-in </li>
+                            <li class="pulll_left">2020 Stock-out </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+<!--    设置地图容器，需要设置宽高样式-->
+                <div class="container1">
+
+
+                        <ul id="info4">
+                            <li>
+                                <a id="info4" ><i class="fa fa-info-circle" style="color: white"></i></a>
+                                <div style="z-index: 1;position: absolute;width: 250px;height: 120px;padding:8px;line-height: 20px;background-color: pink;display: none;">
+                                This map shows the movement of logistics between different warehouses. The circle size represents the amount of storage in and out of the warehouse.
+                                </div>
+                            </li>
+                        </ul>
+
+
+
+                    <ul id="myTab" class="nav nav-tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">First Quarter</a></li>
+                        <li><a href="#tab2" data-toggle="tab">Second Quarter</a></li>
+                        <li><a href="#tab3" data-toggle="tab">Third Quarter</a></li>
+                        <li><a href="#tab4" data-toggle="tab">Fourth Quarter</a></li>
+                    </ul>
+                    <div id="main" class="tab-content" style="background: #1a1a1c">
+                        <div class="tab-pane active" style="height: 200px" id="tab1">
+                            <!-- 没有设置宽高 -->
+                            <div id="tab1-container" style="width:500px; height:500px" class="myTable-container"></div>
+                        </div>
+                        <div class="tab-pane" style="height: 200px"  id="tab2">
+                            <div id="tab2-container" style="width:500px; height:500px" class="myTable-container"></div>
+                        </div>
+                        <div class="tab-pane" style="height: 200px" id="tab3">
+                            <div id="tab3-container" style="width:500px; height:500px" class="myTable-container"></div>
+                        </div>
+                        <div class="tab-pane" style="height: 200px" id="tab4">
+                            <div id="tab4-container" style="width:500px; height:500px" class="main-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <script src="/static/js/jquery.min.js"></script>
+                <script src="/static/js/echarts.js"></script>
+                <script src="https://assets.pyecharts.org/assets/maps/china.js"></script>
+                <script type="text/javascript">
+
+
+                    //注释函数
+                    window.onload = function(){ //弹出info框
+                        var list = document.getElementById('info1');
+                        var list2 = document.getElementById('info2');
+                        var list3 = document.getElementById('info3');
+                        var list4 = document.getElementById('info4');
+                        var list5 = document.getElementById('info5');
+                        var list6 = document.getElementById('info6');
+
+                        var lis = list.getElementsByTagName('li');
+                        var lis2 = list2.getElementsByTagName('li');
+                        var lis3 = list3.getElementsByTagName('li');
+                        var lis4 = list4.getElementsByTagName('li');
+                        var lis5 = list5.getElementsByTagName('li');
+                        var lis6 = list6.getElementsByTagName('li');
+
+                        for(var i=0;i<lis.length;i++){//遍历li元素
+                            lis[i].onmouseover = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'block';
+                            };
+                            lis[i].onmouseout = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'none';
+                            }
+                        }
+                        for(var i=0;i<lis2.length;i++){//遍历li元素
+                            lis2[i].onmouseover = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'block';
+                            };
+                            lis2[i].onmouseout = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'none';
+                            }
+                        }
+                        for(var i=0;i<lis3.length;i++){//遍历li元素
+                            lis3[i].onmouseover = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'block';
+                            };
+                            lis3[i].onmouseout = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'none';
+                            }
+                        }
+                        for(var i=0;i<lis4.length;i++){//遍历li元素
+                            lis4[i].onmouseover = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'block';
+                            };
+                            lis4[i].onmouseout = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'none';
+                            }
+                        }
+                        for(var i=0;i<lis5.length;i++){//遍历li元素
+                            lis5[i].onmouseover = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'block';
+                            };
+                            lis5[i].onmouseout = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'none';
+                            }
+                        }
+                        for(var i=0;i<lis6.length;i++){//遍历li元素
+                            lis6[i].onmouseover = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'block';
+                            };
+                            lis6[i].onmouseout = function(){
+                                this.getElementsByTagName('div')[0].style.display = 'none';
+                            }
+                        }
+                    }
+
+                    var $tab1 = document.getElementById("tab1-container");
+                    var $tab2 = document.getElementById("tab2-container");
+                    var $tab3 = document.getElementById("tab3-container");
+                    var $tab4 = document.getElementById("tab4-container");
+
+                    var option1;
+                    var option2;
+                    var option3;
+                    var option4;
+                    // 数据格式 地图上标点为citys，value为经纬度，symbolSize为标记点的大小
+                    // 数据格式 moveLines，fromName为线条出发城市，toName为线条到达城市，coords为数组经纬度，第一个为出发点经纬度，第二个为到达点经纬度
+                    var allData = {"citys": [
+                            { "name": "珠海", "value": [113.576726, 22.270715, 9], url: "https://www.baidu.com/", "symbolSize": 10, "itemStyle": { "normal": { "color": "#58B3CC" } } },
+                            { "name": "北京", "value": [116.407526, 39.90403, -14], url: "https://www.bing.com/","symbolSize": 20, "itemStyle": { "normal": { "color": "#d2744f" } } },
+                            { "name": "广州", "value": [113.264435, 23.129163, 13], url: "https://www.steam.com/","symbolSize": 30, "itemStyle": { "normal": { "color": "#58B3CC" } } },
+                            { "name": "上海", "value": [121.473701, 31.230416, 44], url: "https://www.baidu.com/","symbolSize": 25, "itemStyle": { "normal": { "color": "#58B3CC" } } },
+                            { "name": "四川", "value": [104.075931, 30.651652, -5], url: "https://www.baidu.com/","symbolSize": 17, "itemStyle": { "normal": { "color": "#58B3CC" } } },
+                            { "name": "黑龙江", "value": [126.661669, 45.742347, -198], url: "https://www.baidu.com/","symbolSize": 8, "itemStyle": { "normal": { "color": "#58B3CC" } } }]
+
+                        ,
+                        "moveLines":[
+                            {"fromName":"黑龙江","toName":"珠海","coords":[[126.661669,45.742347],[117.200983,39.084158]]},
+                            {"fromName":"上海","toName":"广州","coords":[[121.473701,31.230416],[113.264435,23.129163]]},
+                            {"fromName":"四川","toName":"北京","coords":[[104.075931,30.651652],[116.407526,39.90403]]},
+                            {"fromName":"珠海","toName":"黑龙江","coords":[[113.576726,22.270715],[126.661669,45.742347]]},
+                            {"fromName":"北京","toName":"上海","coords":[[116.407526,39.90403],[121.473701,31.230416]]},
+
+                        ]};
+
+                    var allData2 = {"citys":[
+                            {"name":"珠海","value":[113.576726,22.270715,9],url: "https://www.baidu.com/","symbolSize":25,"itemStyle":{"normal":{"color":"#58B3CC"}}},
+                            {"name":"北京","value":[116.407526,39.90403,-14],"symbolSize":10,"itemStyle":{"normal":{"color":"#d2744f"}}},
+                            {"name":"广州","value":[113.264435,23.129163,13],"symbolSize":35,"itemStyle":{"normal":{"color":"#58B3CC"}}},
+                            {"name":"上海","value":[121.473701,31.230416,44],"symbolSize":17,"itemStyle":{"normal":{"color":"#58B3CC"}}},
+                            {"name":"四川","value":[104.075931,30.651652,-5],"symbolSize":6,"itemStyle":{"normal":{"color":"#58B3CC"}}},
+                            {"name":"黑龙江","value":[126.661669,45.742347,-198],"symbolSize":21,"itemStyle":{"normal":{"color":"#58B3CC"}}}]
+
+                        ,
+                        "moveLines":[
+                            {"fromName":"黑龙江","toName":"北京","coords":[[126.661669,45.742347],[116.407526,39.90403]]},
+                            {"fromName":"上海","toName":"珠海","coords":[[121.473701,31.230416],[113.264435,23.129163]]},
+                            {"fromName":"四川","toName":"广州","coords":[[104.075931,30.651652],[116.407526,39.90403]]},
+                            {"fromName":"珠海","toName":"黑龙江","coords":[[113.576726,22.270715],[126.661669,45.742347]]},
+                            {"fromName":"北京","toName":"四川","coords":[[116.407526,39.90403],[104.075931,30.651652]]},
+
+                        ]};
+
+                    var allData3 = {"citys":[
+                            {"name":"珠海","value":[113.576726,22.270715,9],"symbolSize":8,"itemStyle":{"normal":{"color":"#58B3CC"}}},
+                            {"name":"北京","value":[116.407526,39.90403,-14],"symbolSize":35,"itemStyle":{"normal":{"color":"#d2744f"}}},
+                            {"name":"广州","value":[113.264435,23.129163,13],"symbolSize":14,"itemStyle":{"normal":{"color":"#58B3CC"}}},
+                            {"name":"上海","value":[121.473701,31.230416,44],"symbolSize":26,"itemStyle":{"normal":{"color":"#58B3CC"}}},
+                            {"name":"四川","value":[104.075931,30.651652,-5],"symbolSize":10,"itemStyle":{"normal":{"color":"#58B3CC"}}},
+                            {"name":"黑龙江","value":[126.661669,45.742347,-198],"symbolSize":24,"itemStyle":{"normal":{"color":"#58B3CC"}}}]
+
+                        ,
+                        "moveLines":[
+                            {"fromName":"黑龙江","toName":"珠海","coords":[[126.661669,45.742347],[117.200983,39.084158]]},
+                            {"fromName":"上海","toName":"广州","coords":[[121.473701,31.230416],[113.264435,23.129163]]},
+                            {"fromName":"四川","toName":"北京","coords":[[104.075931,30.651652],[116.407526,39.90403]]},
+                            {"fromName":"珠海","toName":"黑龙江","coords":[[113.576726,22.270715],[126.661669,45.742347]]},
+                            {"fromName":"北京","toName":"上海","coords":[[116.407526,39.90403],[121.473701,31.230416]]},
+
+                        ]};
+
+                    var allData4 = {"citys":[
+                            {"name":"珠海","value":[113.576726,22.270715,9],"symbolSize":36,"itemStyle":{"normal":{"color":"#58B3CC"}}},
+                            {"name":"北京","value":[116.407526,39.90403,-14],"symbolSize":7,"itemStyle":{"normal":{"color":"#d2744f"}}},
+                            {"name":"广州","value":[113.264435,23.129163,13],"symbolSize":10,"itemStyle":{"normal":{"color":"#58B3CC"}}},
+                            {"name":"上海","value":[121.473701,31.230416,44],"symbolSize":28,"itemStyle":{"normal":{"color":"#58B3CC"}}},
+                            {"name":"四川","value":[104.075931,30.651652,-5],"symbolSize":16,"itemStyle":{"normal":{"color":"#58B3CC"}}},
+                            {"name":"黑龙江","value":[126.661669,45.742347,-198],"symbolSize":29,"itemStyle":{"normal":{"color":"#58B3CC"}}}]
+
+                        ,
+                        "moveLines":[
+                            {"fromName":"黑龙江","toName":"北京","coords":[[126.661669,45.742347],[116.407526,39.90403]]},
+                            {"fromName":"上海","toName":"珠海","coords":[[121.473701,31.230416],[113.264435,23.129163]]},
+                            {"fromName":"四川","toName":"广州","coords":[[104.075931,30.651652],[116.407526,39.90403]]},
+                            {"fromName":"珠海","toName":"黑龙江","coords":[[113.576726,22.270715],[126.661669,45.742347]]},
+                            {"fromName":"北京","toName":"四川","coords":[[116.407526,39.90403],[104.075931,30.651652]]},
+
+                        ]};
+
+                    option1 = {
+                        backgroundColor: '#000000',
+                        title: {
+                            text: 'Logistics Map', // 地图标题设
+                            sublink:"http://www.baidu.com", //小标题链接
+                            target:"blank", //'self' 当前窗口打开，'blank' 新窗口打开
+                            padding:5, // 标题内边距 5  [5, 10]  [5,10,5,10]
+                            left:"center", // 组件离容器左侧的距离,'left', 'center', 'right','20%'
+                            top:"5%", // 组件离容器上侧的距离,'top', 'middle', 'bottom','20%'
+                            right:"auto", // 组件离容器右侧的距离,'20%'
+                            bottom:"auto", // 组件离容器下侧的距离,'20%'
+                            textStyle: {
+                                color:"#000000", //文字颜色
+                                fontStyle:"normal", // italic斜体  oblique倾斜
+                                fontWeight:"normal", // 文字粗细bold   bolder   lighter  100 | 200 | 300 | 400...
+                                fontFamily:"sans-serif", // 字体系列
+                                fontSize:18, // 字体大小
+                            }
+                        },
+                        legend: { // 右下角图例
+                            show: false, // 是否显示
+                            orient: 'vertical', // 图例排列方向
+                            top: 'bottom', // 位置
+                            left: 'right', // 位置
+                            data: ['地点', '线路'], // 数据
+                            textStyle: { // 文字设置
+                                color: '#000000'
+                            }
+                        },
+                        geo: {
+                            show:true, // 是否显示
+                            map: 'china', // 地图类型。world世界地图，china中国地图
+                            // center:[115.97, 29.71], //当前视角的中心点，用经纬度表示
+                            label: {
+                                normal:{ //普通状态下的标签文本样式。(省份名称)
+                                    show: false, //是否在普通状态下显示标签。
+                                    textStyle: { // 文字设置
+                                        color: '#000000'
+                                    },
+                                },
+                                emphasis: { // 是否在高亮状态下显示标签。(省份名称)
+                                    show: true,
+                                    textStyle: { // 文字设置
+                                        color: '#fff'
+                                    },
+                                }
+                            },
+                            roam: false, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移，可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+                            itemStyle: { // 地图板块区域的多边形 图形样式
+                                normal: { // 默认板块信息
+                                    areaColor: '#545454',
+                                    borderColor: '#ffffff'
+                                },
+                                emphasis: { // 高亮版板块信息
+                                    areaColor: '#2a333d'
+                                }
+                            }
+                        },
+                        series: [{
+                            name: '地点',
+                            type: 'effectScatter', // 特效散点图
+                            coordinateSystem: 'geo', // 'cartesian2d'使用二维的直角坐标系。'geo'使用地理坐标系
+                            zlevel: 2, // 所有图形的 zlevel 值。
+                            rippleEffect: { //涟漪特效相关配置。
+                                brushType: 'stroke', //波纹的绘制方式，可选 'stroke' 和 'fill'。
+                                period:4, // 动画的时间。
+                                scale:2.5, // 动画中波纹的最大缩放比例。
+                            },
+                            label: {
+                                normal: {
+                                    show: false,                  //是否显示标签。
+                                    position: "inside",          //标签的位置。// 绝对的像素值[10, 10],// 相对的百分比['50%', '50%'].'top','left','right','bottom','inside','insideLeft','insideRight','insideTop','insideBottom','insideTopLeft','insideBottomLeft','insideTopRight','insideBottomRight'
+                                    offset: [30, 40],             //是否对文字进行偏移。默认不偏移。例如：[30, 40] 表示文字在横向上偏移 30，纵向上偏移 40。
+                                    formatter: '{b}: {c}',       //标签内容格式器。模板变量有 {a}、{b}、{c}，分别表示系列名，数据名，数据值。
+                                },
+                                emphasis: {
+                                    show: true,
+                                    position: 'right',
+                                    formatter: '{b}'
+                                }
+                            },
+                            symbolSize: 2, // 标记的大小，可以设置成诸如 10 这样单一的数字，也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10。
+                            showEffectOn: 'render', // 配置何时显示特效。可选：'render' 绘制完成后显示特效。'emphasis' 高亮（hover）的时候显示特效。
+                            itemStyle: { // 图形样式，normal 是图形在默认状态下的样式；emphasis 是图形在高亮状态下的样式，比如在鼠标悬浮或者图例联动高亮时。
+                                normal: {
+                                    color: '#46bee9'
+                                }
+                            },
+                            data: allData.citys
+                        }, {
+                            name: '线路',
+                            type: 'lines',
+                            coordinateSystem: 'geo', // 'cartesian2d'使用二维的直角坐标系。'geo'使用地理坐标系
+                            zlevel: 2,
+                            large: true, // 是否开启大规模散点图的优化，在数据图形特别多的时候（>=5k）可以开启。开启后配合 largeThreshold 在数据量大于指定阈值的时候对绘制进行优化。缺点：优化后不能自定义设置单个数据项的样式。
+                            effect: {
+                                show: true,
+                                constantSpeed: 30, // 点移动的速度
+                                symbol: 'pin',  // 图形 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
+                                symbolSize: 3, // 标记的大小，可以设置成诸如 10 这样单一的数字，也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10。
+                                trailLength: 0, // 线的宽度
+                            },
+                            lineStyle: { // 线的颜色、宽度，样式设置
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0, color: '#58B3CC'
+                                    }, {
+                                        offset: 1, color: '#58B3CC'
+                                    }], false),
+                                    width: 5, // 线的宽度
+                                    opacity: 0.2, // 线的透明度
+                                    curveness: 0.1 // 线的完全程度
+                                }
+                            },
+                            data: allData.moveLines
+                        }]
+                    };
+                    option2 = {
+                        backgroundColor: '#000000',
+                        title: {
+                            text: 'Logistics Map', // 地图标题设
+                            sublink:"http://www.baidu.com", //小标题链接
+                            target:"blank", //'self' 当前窗口打开，'blank' 新窗口打开
+                            padding:5, // 标题内边距 5  [5, 10]  [5,10,5,10]
+                            left:"center", // 组件离容器左侧的距离,'left', 'center', 'right','20%'
+                            top:"5%", // 组件离容器上侧的距离,'top', 'middle', 'bottom','20%'
+                            right:"auto", // 组件离容器右侧的距离,'20%'
+                            bottom:"auto", // 组件离容器下侧的距离,'20%'
+                            textStyle: {
+                                color:"#000000", //文字颜色
+                                fontStyle:"normal", // italic斜体  oblique倾斜
+                                fontWeight:"normal", // 文字粗细bold   bolder   lighter  100 | 200 | 300 | 400...
+                                fontFamily:"sans-serif", // 字体系列
+                                fontSize:18, // 字体大小
+                            }
+                        },
+                        legend: { // 右下角图例
+                            show: false, // 是否显示
+                            orient: 'vertical', // 图例排列方向
+                            top: 'bottom', // 位置
+                            left: 'right', // 位置
+                            data: ['地点', '线路'], // 数据
+                            textStyle: { // 文字设置
+                                color: '#000000'
+                            }
+                        },
+                        geo: {
+                            show:true, // 是否显示
+                            map: 'china', // 地图类型。world世界地图，china中国地图
+                            // center:[115.97, 29.71], //当前视角的中心点，用经纬度表示
+                            label: {
+                                normal:{ //普通状态下的标签文本样式。(省份名称)
+                                    show: false, //是否在普通状态下显示标签。
+                                    textStyle: { // 文字设置
+                                        color: '#000000'
+                                    },
+                                },
+                                emphasis: { // 是否在高亮状态下显示标签。(省份名称)
+                                    show: true,
+                                    textStyle: { // 文字设置
+                                        color: '#fff'
+                                    },
+                                }
+                            },
+                            roam: false, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移，可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+                            itemStyle: { // 地图板块区域的多边形 图形样式
+                                normal: { // 默认板块信息
+                                    areaColor: '#545454',
+                                    borderColor: '#ffffff'
+                                },
+                                emphasis: { // 高亮版板块信息
+                                    areaColor: '#2a333d'
+                                }
+                            }
+                        },
+                        series: [{
+                            name: '地点',
+                            type: 'effectScatter', // 特效散点图
+                            coordinateSystem: 'geo', // 'cartesian2d'使用二维的直角坐标系。'geo'使用地理坐标系
+                            zlevel: 2, // 所有图形的 zlevel 值。
+                            rippleEffect: { //涟漪特效相关配置。
+                                brushType: 'stroke', //波纹的绘制方式，可选 'stroke' 和 'fill'。
+                                period:4, // 动画的时间。
+                                scale:2.5, // 动画中波纹的最大缩放比例。
+                            },
+                            label: {
+                                normal: {
+                                    show: false,                  //是否显示标签。
+                                    position: "inside",          //标签的位置。// 绝对的像素值[10, 10],// 相对的百分比['50%', '50%'].'top','left','right','bottom','inside','insideLeft','insideRight','insideTop','insideBottom','insideTopLeft','insideBottomLeft','insideTopRight','insideBottomRight'
+                                    offset: [30, 40],             //是否对文字进行偏移。默认不偏移。例如：[30, 40] 表示文字在横向上偏移 30，纵向上偏移 40。
+                                    formatter: '{b}: {c}',       //标签内容格式器。模板变量有 {a}、{b}、{c}，分别表示系列名，数据名，数据值。
+                                },
+                                emphasis: {
+                                    show: true,
+                                    position: 'right',
+                                    formatter: '{b}'
+                                }
+                            },
+                            symbolSize: 2, // 标记的大小，可以设置成诸如 10 这样单一的数字，也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10。
+                            showEffectOn: 'render', // 配置何时显示特效。可选：'render' 绘制完成后显示特效。'emphasis' 高亮（hover）的时候显示特效。
+                            itemStyle: { // 图形样式，normal 是图形在默认状态下的样式；emphasis 是图形在高亮状态下的样式，比如在鼠标悬浮或者图例联动高亮时。
+                                normal: {
+                                    color: '#46bee9'
+                                }
+                            },
+                            data: allData2.citys
+                        }, {
+                            name: '线路',
+                            type: 'lines',
+                            coordinateSystem: 'geo', // 'cartesian2d'使用二维的直角坐标系。'geo'使用地理坐标系
+                            zlevel: 2,
+                            large: true, // 是否开启大规模散点图的优化，在数据图形特别多的时候（>=5k）可以开启。开启后配合 largeThreshold 在数据量大于指定阈值的时候对绘制进行优化。缺点：优化后不能自定义设置单个数据项的样式。
+                            effect: {
+                                show: true,
+                                constantSpeed: 30, // 点移动的速度
+                                symbol: 'pin',  // 图形 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
+                                symbolSize: 3, // 标记的大小，可以设置成诸如 10 这样单一的数字，也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10。
+                                trailLength: 0, // 线的宽度
+                            },
+                            lineStyle: { // 线的颜色、宽度，样式设置
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0, color: '#58B3CC'
+                                    }, {
+                                        offset: 1, color: '#58B3CC'
+                                    }], false),
+                                    width: 5, // 线的宽度
+                                    opacity: 0.2, // 线的透明度
+                                    curveness: 0.1 // 线的完全程度
+                                }
+                            },
+                            data: allData2.moveLines
+                        }]
+                    };
+                    option3 = {
+                        backgroundColor: '#000000',
+                        title: {
+                            text: 'Logistics Map', // 地图标题设
+                            sublink:"http://www.baidu.com", //小标题链接
+                            target:"blank", //'self' 当前窗口打开，'blank' 新窗口打开
+                            padding:5, // 标题内边距 5  [5, 10]  [5,10,5,10]
+                            left:"center", // 组件离容器左侧的距离,'left', 'center', 'right','20%'
+                            top:"5%", // 组件离容器上侧的距离,'top', 'middle', 'bottom','20%'
+                            right:"auto", // 组件离容器右侧的距离,'20%'
+                            bottom:"auto", // 组件离容器下侧的距离,'20%'
+                            textStyle: {
+                                color:"#000000", //文字颜色
+                                fontStyle:"normal", // italic斜体  oblique倾斜
+                                fontWeight:"normal", // 文字粗细bold   bolder   lighter  100 | 200 | 300 | 400...
+                                fontFamily:"sans-serif", // 字体系列
+                                fontSize:18, // 字体大小
+                            }
+                        },
+                        legend: { // 右下角图例
+                            show: false, // 是否显示
+                            orient: 'vertical', // 图例排列方向
+                            top: 'bottom', // 位置
+                            left: 'right', // 位置
+                            data: ['地点', '线路'], // 数据
+                            textStyle: { // 文字设置
+                                color: '#000000'
+                            }
+                        },
+                        geo: {
+                            show:true, // 是否显示
+                            map: 'china', // 地图类型。world世界地图，china中国地图
+                            // center:[115.97, 29.71], //当前视角的中心点，用经纬度表示
+                            label: {
+                                normal:{ //普通状态下的标签文本样式。(省份名称)
+                                    show: false, //是否在普通状态下显示标签。
+                                    textStyle: { // 文字设置
+                                        color: '#000000'
+                                    },
+                                },
+                                emphasis: { // 是否在高亮状态下显示标签。(省份名称)
+                                    show: true,
+                                    textStyle: { // 文字设置
+                                        color: '#fff'
+                                    },
+                                }
+                            },
+                            roam: false, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移，可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+                            itemStyle: { // 地图板块区域的多边形 图形样式
+                                normal: { // 默认板块信息
+                                    areaColor: '#545454',
+                                    borderColor: '#ffffff'
+                                },
+                                emphasis: { // 高亮版板块信息
+                                    areaColor: '#2a333d'
+                                }
+                            }
+                        },
+                        series: [{
+                            name: '地点',
+                            type: 'effectScatter', // 特效散点图
+                            coordinateSystem: 'geo', // 'cartesian2d'使用二维的直角坐标系。'geo'使用地理坐标系
+                            zlevel: 2, // 所有图形的 zlevel 值。
+                            rippleEffect: { //涟漪特效相关配置。
+                                brushType: 'stroke', //波纹的绘制方式，可选 'stroke' 和 'fill'。
+                                period:4, // 动画的时间。
+                                scale:2.5, // 动画中波纹的最大缩放比例。
+                            },
+                            label: {
+                                normal: {
+                                    show: false,                  //是否显示标签。
+                                    position: "inside",          //标签的位置。// 绝对的像素值[10, 10],// 相对的百分比['50%', '50%'].'top','left','right','bottom','inside','insideLeft','insideRight','insideTop','insideBottom','insideTopLeft','insideBottomLeft','insideTopRight','insideBottomRight'
+                                    offset: [30, 40],             //是否对文字进行偏移。默认不偏移。例如：[30, 40] 表示文字在横向上偏移 30，纵向上偏移 40。
+                                    formatter: '{b}: {c}',       //标签内容格式器。模板变量有 {a}、{b}、{c}，分别表示系列名，数据名，数据值。
+                                },
+                                emphasis: {
+                                    show: true,
+                                    position: 'right',
+                                    formatter: '{b}'
+                                }
+                            },
+                            symbolSize: 2, // 标记的大小，可以设置成诸如 10 这样单一的数字，也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10。
+                            showEffectOn: 'render', // 配置何时显示特效。可选：'render' 绘制完成后显示特效。'emphasis' 高亮（hover）的时候显示特效。
+                            itemStyle: { // 图形样式，normal 是图形在默认状态下的样式；emphasis 是图形在高亮状态下的样式，比如在鼠标悬浮或者图例联动高亮时。
+                                normal: {
+                                    color: '#46bee9'
+                                }
+                            },
+                            data: allData3.citys
+                        }, {
+                            name: '线路',
+                            type: 'lines',
+                            coordinateSystem: 'geo', // 'cartesian2d'使用二维的直角坐标系。'geo'使用地理坐标系
+                            zlevel: 2,
+                            large: true, // 是否开启大规模散点图的优化，在数据图形特别多的时候（>=5k）可以开启。开启后配合 largeThreshold 在数据量大于指定阈值的时候对绘制进行优化。缺点：优化后不能自定义设置单个数据项的样式。
+                            effect: {
+                                show: true,
+                                constantSpeed: 30, // 点移动的速度
+                                symbol: 'pin',  // 图形 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
+                                symbolSize: 3, // 标记的大小，可以设置成诸如 10 这样单一的数字，也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10。
+                                trailLength: 0, // 线的宽度
+                            },
+                            lineStyle: { // 线的颜色、宽度，样式设置
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0, color: '#58B3CC'
+                                    }, {
+                                        offset: 1, color: '#58B3CC'
+                                    }], false),
+                                    width: 5, // 线的宽度
+                                    opacity: 0.2, // 线的透明度
+                                    curveness: 0.1 // 线的完全程度
+                                }
+                            },
+                            data: allData3.moveLines
+                        }]
+                    };
+                    option4 = {
+                        backgroundColor: '#000000',
+                        title: {
+                            text: 'Logistics Map', // 地图标题设
+                            sublink:"http://www.baidu.com", //小标题链接
+                            target:"blank", //'self' 当前窗口打开，'blank' 新窗口打开
+                            padding:5, // 标题内边距 5  [5, 10]  [5,10,5,10]
+                            left:"center", // 组件离容器左侧的距离,'left', 'center', 'right','20%'
+                            top:"5%", // 组件离容器上侧的距离,'top', 'middle', 'bottom','20%'
+                            right:"auto", // 组件离容器右侧的距离,'20%'
+                            bottom:"auto", // 组件离容器下侧的距离,'20%'
+                            textStyle: {
+                                color:"#000000", //文字颜色
+                                fontStyle:"normal", // italic斜体  oblique倾斜
+                                fontWeight:"normal", // 文字粗细bold   bolder   lighter  100 | 200 | 300 | 400...
+                                fontFamily:"sans-serif", // 字体系列
+                                fontSize:18, // 字体大小
+                            }
+                        },
+                        legend: { // 右下角图例
+                            show: false, // 是否显示
+                            orient: 'vertical', // 图例排列方向
+                            top: 'bottom', // 位置
+                            left: 'right', // 位置
+                            data: ['地点', '线路'], // 数据
+                            textStyle: { // 文字设置
+                                color: '#000000'
+                            }
+                        },
+                        geo: {
+                            show:true, // 是否显示
+                            map: 'china', // 地图类型。world世界地图，china中国地图
+                            // center:[115.97, 29.71], //当前视角的中心点，用经纬度表示
+                            label: {
+                                normal:{ //普通状态下的标签文本样式。(省份名称)
+                                    show: false, //是否在普通状态下显示标签。
+                                    textStyle: { // 文字设置
+                                        color: '#000000'
+                                    },
+                                },
+                                emphasis: { // 是否在高亮状态下显示标签。(省份名称)
+                                    show: true,
+                                    textStyle: { // 文字设置
+                                        color: '#fff'
+                                    },
+                                }
+                            },
+                            roam: false, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移，可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+                            itemStyle: { // 地图板块区域的多边形 图形样式
+                                normal: { // 默认板块信息
+                                    areaColor: '#545454',
+                                    borderColor: '#ffffff'
+                                },
+                                emphasis: { // 高亮版板块信息
+                                    areaColor: '#2a333d'
+                                }
+                            }
+                        },
+                        series: [{
+                            name: '地点',
+                            type: 'effectScatter', // 特效散点图
+                            coordinateSystem: 'geo', // 'cartesian2d'使用二维的直角坐标系。'geo'使用地理坐标系
+                            zlevel: 2, // 所有图形的 zlevel 值。
+                            rippleEffect: { //涟漪特效相关配置。
+                                brushType: 'stroke', //波纹的绘制方式，可选 'stroke' 和 'fill'。
+                                period:4, // 动画的时间。
+                                scale:2.5, // 动画中波纹的最大缩放比例。
+                            },
+                            label: {
+                                normal: {
+                                    show: false,                  //是否显示标签。
+                                    position: "inside",          //标签的位置。// 绝对的像素值[10, 10],// 相对的百分比['50%', '50%'].'top','left','right','bottom','inside','insideLeft','insideRight','insideTop','insideBottom','insideTopLeft','insideBottomLeft','insideTopRight','insideBottomRight'
+                                    offset: [30, 40],             //是否对文字进行偏移。默认不偏移。例如：[30, 40] 表示文字在横向上偏移 30，纵向上偏移 40。
+                                    formatter: '{b}: {c}',       //标签内容格式器。模板变量有 {a}、{b}、{c}，分别表示系列名，数据名，数据值。
+                                },
+                                emphasis: {
+                                    show: true,
+                                    position: 'right',
+                                    formatter: '{b}'
+                                }
+                            },
+                            symbolSize: 2, // 标记的大小，可以设置成诸如 10 这样单一的数字，也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10。
+                            showEffectOn: 'render', // 配置何时显示特效。可选：'render' 绘制完成后显示特效。'emphasis' 高亮（hover）的时候显示特效。
+                            itemStyle: { // 图形样式，normal 是图形在默认状态下的样式；emphasis 是图形在高亮状态下的样式，比如在鼠标悬浮或者图例联动高亮时。
+                                normal: {
+                                    color: '#46bee9'
+                                }
+                            },
+                            data: allData4.citys
+                        }, {
+                            name: '线路',
+                            type: 'lines',
+                            coordinateSystem: 'geo', // 'cartesian2d'使用二维的直角坐标系。'geo'使用地理坐标系
+                            zlevel: 2,
+                            large: true, // 是否开启大规模散点图的优化，在数据图形特别多的时候（>=5k）可以开启。开启后配合 largeThreshold 在数据量大于指定阈值的时候对绘制进行优化。缺点：优化后不能自定义设置单个数据项的样式。
+                            effect: {
+                                show: true,
+                                constantSpeed: 30, // 点移动的速度
+                                symbol: 'pin',  // 图形 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
+                                symbolSize: 3, // 标记的大小，可以设置成诸如 10 这样单一的数字，也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10。
+                                trailLength: 0, // 线的宽度
+                            },
+                            lineStyle: { // 线的颜色、宽度，样式设置
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0, color: '#58B3CC'
+                                    }, {
+                                        offset: 1, color: '#58B3CC'
+                                    }], false),
+                                    width: 5, // 线的宽度
+                                    opacity: 0.2, // 线的透明度
+                                    curveness: 0.1 // 线的完全程度
+                                }
+                            },
+                            data: allData4.moveLines
+                        }]
+                    };
+
+                    var myChart1 = echarts.init($tab1);
+                    myChart1.setOption(option1);
+                    myChart1.on('click', function (params){
+                        switch (params.name){
+                            case "珠海":
+                                $.post('/main_page_switching',{
+                                    data: "Zhuhai"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "北京":
+                                $.post('/main_page_switching',{
+                                    data: "Beijing"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "广州":
+                                $.post('/main_page_switching',{
+                                    data: "Guangzhou"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "上海":
+                                $.post('/main_page_switching',{
+                                    data: "Shanghai"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "四川":
+                                $.post('/main_page_switching',{
+                                    data: "Sichuan"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "黑龙江":
+                                $.post('/main_page_switching',{
+                                    data: "HeiLongjiang"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+                    })
+
+
+                    $('a[data-toggle="tab"]').on('click', function (e) {
+                        console.log(e)
+                        var activeTab = $(e.target)[0].hash;
+                        if (activeTab === "#tab2") {
+                            echarts.dispose($tab2);
+                            var mychart2 = echarts.init($tab2);
+                            mychart2.setOption(option2);
+                            mychart2.on('click', function (params){
+                        switch (params.name){
+                            case "珠海":
+                                $.post('/main_page_switching',{
+                                    data: "Zhuhai"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "北京":
+                               $.post('/main_page_switching',{
+                                    data: "Beijing"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "广州":
+                                $.post('/main_page_switching',{
+                                    data: "Guangzhou"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "上海":
+                                $.post('/main_page_switching',{
+                                    data: "Shanghai"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "四川":
+                                $.post('/main_page_switching',{
+                                    data: "Sichuan"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "黑龙江":
+                                $.post('/main_page_switching',{
+                                    data: "HeiLongjiang"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+                    })
+                        } else if (activeTab === "#tab3") {
+                            echarts.dispose($tab3);
+                            var mychart3 = echarts.init($tab3);
+                            mychart3.setOption(option3);
+
+                            mychart3.on('click', function (params){
+                        switch (params.name){
+                            case "珠海":
+                                $.post('/main_page_switching',{
+                                    data: "Zhuhai"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "北京":
+                               $.post('/main_page_switching',{
+                                    data: "Beijing"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "广州":
+                                $.post('/main_page_switching',{
+                                    data: "Guangzhou"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "上海":
+                                $.post('/main_page_switching',{
+                                    data: "Shanghai"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "四川":
+                                $.post('/main_page_switching',{
+                                    data: "Sichuan"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "黑龙江":
+                                $.post('/main_page_switching',{
+                                    data: "HeiLongjiang"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+                    })
+
+                        } else if (activeTab === "#tab4") {
+                            echarts.dispose($tab4);
+                            var mychart4 = echarts.init($tab4);
+                            mychart4.setOption(option4);
+                            mychart4.on('click', function (params){
+                        switch (params.name){
+                            case "珠海":
+                                $.post('/main_page_switching',{
+                                    data: "Zhuhai"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "北京":
+                               $.post('/main_page_switching',{
+                                    data: "Beijing"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "广州":
+                                $.post('/main_page_switching',{
+                                    data: "Guangzhou"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "上海":
+                                $.post('/main_page_switching',{
+                                    data: "Shanghai"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "四川":
+                                $.post('/main_page_switching',{
+                                    data: "Sichuan"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+
+                        switch (params.name){
+                            case "黑龙江":
+                                $.post('/main_page_switching',{
+                                    data: "HeiLongjiang"
+                                }).done(window.location.href = "/main_page")
+                                break;
+                        }
+                    })
+                        }
+                    })
+                </script>
+
+             <script>
+                    $(function() {
+                        const relationChart = echarts.init(document.getElementById("relationChart"));
+                        const relationOpt = {
+                            animationDurationUpdate: 1500,
+                            animationEasingUpdate: 'quinticInOut',
+
+                            label: {
+                                normal: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: 12
+                                    }
+                                }
+                            },
+                            series: [{
+                                type: 'graph',
+                                symbolSize: 45,
+                                focusNodeAdjacency: true,
+                                roam: true,
+                                layout: 'force',
+                                force: {
+                                    repulsion: 320 //斥力因子，值越大，斥力越大
+                                },
+                                label: {
+                                    normal: {
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: 12
+                                        },
+                                    }
+                                },
+                                edgeSymbolSize: [4, 50],
+                                edgeLabel: {
+                                    normal: {
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: 10
+                                        },
+                                        formatter: "{c}"
+                                    }
+                                },
+                                categories: [{
+                                    name: 'Warehouse',
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#f2637b'
+                                        }
+                                    }
+                                }, {
+                                    name: 'Fruit',
+                                    itemStyle: {
+                                        normal: {
+                                            color: "#eaa674",
+                                        }
+                                    }
+                                }, {
+                                    name: 'Seafood',
+                                    itemStyle: {
+                                        normal: {
+                                            color: "#3aa1ff",
+                                        }
+                                    }
+                                }, {
+                                    name: 'Digital Products',
+                                    itemStyle: {
+                                        normal: {
+                                            color: "#4ecb73",
+                                        }
+                                    }
+                                }, {
+                                    name: 'Clothing',
+                                    itemStyle: {
+                                        normal: {
+                                            color: "#a446de",
+                                        }
+                                    }
+                                }, {
+                                    name: 'Furniture',
+                                    itemStyle: {
+                                        normal: {
+                                            color: "#eede8e",
+                                        }
+                                    }
+                                }, {
+                                    name: 'Books',
+                                    itemStyle: {
+                                        normal: {
+                                            color: "#ed5af1",
+                                        }
+                                    }
+                                }, {
+                                    name: 'Appliances',
+                                    itemStyle: {
+                                        normal: {
+                                            color: "#8fe8e2",
+                                        }
+                                    }
+                                }, {
+                                    name: 'Daily Necessities',
+                                    itemStyle: {
+                                        normal: {
+                                            color: "#8c159a",
+                                        }
+                                    }
+                                }, {
+                                    name: 'Medicine',
+                                    itemStyle: {
+                                        normal: {
+                                            color: "#3e3e3c",
+                                        }
+                                    }
+                                }],
+                                data: [{
+                                    name: 'Warehouse',
+                                    category: 0,
+                                    draggable: true
+                                }, {
+                                    name: 'Fruit',
+                                    category: 1,
+                                    draggable: true
+                                }, {
+                                    name: 'Seafood',
+                                    category: 2,
+                                    draggable: true
+                                }, {
+                                    name: 'Digital Products',
+                                    category: 3,
+                                    draggable: true
+                                }, {
+                                    name: 'Clothing',
+                                    category: 4,
+                                    draggable: true,
+                                }, {
+                                    name: 'Furniture',
+                                    category: 5,
+                                    draggable: true,
+                                }, {
+                                    name: 'Books',
+                                    category: 6,
+                                    draggable: true,
+                                }, {
+                                    name: 'Appliances',
+                                    category: 7,
+                                    draggable: true,
+                                }, {
+                                    name: 'Daily Necessities',
+                                    category: 8,
+                                    draggable: true,
+                                }, {
+                                    name: 'Medicine',
+                                    category: 9,
+                                    draggable: true,
+                                }],
+                                links: [{
+                                    source: 0,
+                                    target: 1,
+                                    value: ''
+                                }, {
+                                    source: 0,
+                                    target: 2,
+                                    value: ''
+                                }, {
+                                    source: 0,
+                                    target: 3,
+                                    value: ''
+                                }, {
+                                    source: 0,
+                                    target: 4,
+                                    value: ''
+                                }, {
+                                    source: 0,
+                                    target: 5,
+                                    value: ''
+                                }, {
+                                    source: 0,
+                                    target: 6,
+                                    value: ''
+                                }, {
+                                    source: 0,
+                                    target: 7,
+                                    value: ''
+                                }, {
+                                    source: 0,
+                                    target: 8,
+                                    value: ''
+                                }, {
+                                    source: 0,
+                                    target: 9,
+                                    value: ''
+                                }],
+                                lineStyle: {
+                                    normal: {
+                                        opacity: 0.9,
+                                        width: 1,
+                                        curveness: 0
+                                    }
+                                }
+                            }]
+                        };
+                        relationChart.setOption(relationOpt);
+
+                        relationChart.on('click', function(p){
+                                var name = p.name;
+                                if(name==="Fruit"){
+                                    openModal('#mainModal');
+                                }else if(name==="Seafood"){
+                                    window.location.href="Main_Page_manager.html";
+                                }else if(name==="Digital Products"){
+                                    window.location.href="Main_Page_manager.html";
+                                }else if(name==="Clothing"){
+                                    window.location.href="Main_Page_manager.html";
+                                }else if(name==="Furniture"){
+                                    window.location.href="Main_Page_manager.html";
+                                }else if(name==="Books"){
+                                    window.location.href="Main_Page_manager.html";
+                                }else if(name==="Appliances"){
+                                    window.location.href="Main_Page_manager.html";
+                                }else if(name==="Daily Necessities"){
+                                    window.location.href="Main_Page_manager.html";
+                                }else if(name==="Medicine"){
+                                    window.location.href="Main_Page_manager.html";
+                                }
+                            })
+
+                    });
+
+
+                </script>
+
+            </li>
+            <li>
+                <!--板块五-->
+                <div class="boxall" style="height:5.5rem">
+
+                <div class="col-md-1">
+                    <ul id="info5">
+                        <li>
+                            <a><i class="fa fa-info-circle" style="color: white"></i></a>
+                            <div style="z-index: 1;position: absolute;width: 230px;height: 120px;padding:8px;line-height: 20px;background-color: pink;display: none;">
+                                This diagram shows all the categories in the repository. Click on the circle to view specific product information in this category.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                    <div class="alltitle">Relation Chart</div>
+                    <div class="fill-h">
+                        <div class="xpanel-wrapper xpanel-wrapper-2-3">
+                            <div class="xpanel">  <!--365 335-->
+                                <div class="fill-h" id="relationChart" style="height: 280px;width: 330px;padding:0;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                  <!--
+                            <button class="btn btn-lg blue"
+                                    data-toggle="modal" data-target="#mainModal" onclick="openModal('#mainModal3')">
+                                    <span class="fa fa-user fa-lg"></span>Manager
+                            </button>
+                            -->
+
+
+
+
+                </div>
+
+
+
+
+                <div class="modal fade" id="mainModal3" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>×</span></button>
+                                   <h4 class="modal-title">Manager</h4>
+                            </div>
+
+                                <div class="modal-body">
+                                <table>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Warehouse In Charge</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiantian</td>
+                                        <td>Shanghai/Beijing</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Lv Junyi</td>
+                                        <td>Shanghai</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Gao Ruihan</td>
+                                        <td>Sichuan/Heilongjiang</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Zheng Yifan</td>
+                                        <td>Guangzhou</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Zhang Mingjia</td>
+                                        <td>Beijing</td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+
+                <!--板块六-->
+                <div class="boxall" style="height: 3.2rem">
+
+                <div class="col-md-1">
+                    <ul id="info6">
+                        <li>
+                            <a><i class="fa fa-info-circle" style="color: white"></i></a>
+                            <div style="z-index: 9999999999999999;position: absolute;width: 200px;height: 80px;padding:8px;line-height: 20px;background-color: pink;display: none;">
+                                This diagram shows the utilization of each warehouse.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                    <div class="alltitle">Warehouse utilization</div>
+
+                <div class="htmleaf-container">
+
+                        <div class="demo">
+                                <div class="container">
+                                    <p style="color:floralwhite">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上海
+                                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;北京
+                                        &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;广州
+                                        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;四川</p>
+
+                                        <div >
+                                            <div class="progress blue col-md-2">
+                                                <span class="progress-left">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <span class="progress-right">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <div class="progress-value">90%</div>
+                                            </div>
+                                        </div>
+<!--&nbsp;-->
+                                        <div >
+                                            <div class="progress yellow col-md-1">
+                                                <span class="progress-left">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <span class="progress-right">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <div class="progress-value">75%</div>
+                                            </div>
+                                        </div>
+
+                                        <div >
+                                            <div class="progress pink col-md-1">
+                                                <span class="progress-left">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <span class="progress-right">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <div class="progress-value">80%</div>
+                                            </div>
+                                        </div>
+                                        <div >
+                                            <div class="progress green col-md-1">
+                                                <span class="progress-left">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <span class="progress-right">
+                                                    <span class="progress-bar"></span>
+                                                </span>
+                                                <div class="progress-value">60%</div>
+                                            </div>
+                                        </div>
+
+
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+ <!--               <div class="boxall" style="height: 3rem">
+                    <div class="alltitle">Progress bar</div>
+
+<div id="container" style="min-width:200px;height:200px background-color:#000"></div>
+
+	<script>
+	var chart = Highcharts.chart('container', {
+	chart: {
+		type: 'bar'
+	},
+	title: {
+		text: ''
+	},
+	xAxis: {
+		categories: ['任务1', '任务2', '任务3', '任务4', '任务5']
+	},
+	yAxis: {
+		min: 0,
+		title: {
+			text: '水果消费总量'
+		}
+	},
+	legend: {
+		/* 图例显示顺序反转
+         * 这是因为堆叠的顺序默认是反转的，可以设置
+         * yAxis.reversedStacks = false 来达到类似的效果
+         */
+		reversed: true
+	},
+	plotOptions: {
+		series: {
+			stacking: 'normal'
+		}
+	},
+	series: [{
+		name: '申请',
+		data: [5, 3, 4, 7, 2]
+	}, {
+		name: '出库',
+		data: [2, 2, 3, 2, 1]
+	}, {
+		name: '入库',
+		data: [3, 4, 4, 2, 5]
+	}]
+});</script> -->
+
+
+            </li></ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="back"></div>
+
+
+    <script type="text/javascript" src="/static/js/china.js"></script>
+    <script type="text/javascript" src="/static/js/area_echarts.js"></script>
+
+</div>
+</body>
+</html>
