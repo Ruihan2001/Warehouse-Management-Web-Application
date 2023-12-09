@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    
+<title>Warehouse Project</title>
+
+ <style>
+div
+    {
+      width: 50%;
+      height: 75%;
+      overflow: auto;
+      margin: auto;
+      position: absolute;
+      top: 65%; left: 30%; bottom: 0; right: 0;
+	}
+ 
+ p {
+     
+     font-size:25px;
+ }
+ </style>
+
+
+</head>
+<body background="C:\WMSFront-end\resources\background_1.jpg">
+    <div>
+       <h1 align = "center">Warehouse Management System</h1>
+         <p align = "center">
+         Login
+         </p>
+            <form name="inputUser" onsubmit="return validateUsername()" method="POST">    
+              <table align = "center", border = "2">
+                <tr>
+                  <td>Username: </td>
+                   <td>
+                    <input type="text" name="emp_username">
+                   </td>
+                </tr>
+                <tr>
+                  <td>Password: </td>
+                   <td>
+                    <input type="password" name="emp_password">
+                   </td>
+                </tr>
+                <tr>  
+                   <td colspan="2",align="center">           
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset">
+                   </td>
+                </tr>
+               </table>
+           </form>
+    </div>
+
+</body>
+</html>

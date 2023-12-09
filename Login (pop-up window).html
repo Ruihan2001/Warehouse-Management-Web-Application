@@ -1,0 +1,57 @@
+<html>
+<body>
+
+<h1 style="text-align:center"> Warehouse Management System </h1>
+
+<script type="text/javascript">
+function login(){
+	var username=document.getElementById("username");
+	var password=document.getElementById("password");
+	if(username.value=="eren" && password.value==1){
+    	var r=confirm("press the OK button to enter the system");
+		if (r==true){
+			location.href="https://www.runoob.com/js/js-tutorial.html"
+		}	
+		
+	}else{
+		alert("Incorrect user or password input");
+	}	
+}
+</script>
+
+<script type="text/javascript">
+	function reset(){
+		username.value="" && password.value="";
+			
+</script>
+
+
+
+<form>
+<div style="text-align:center">
+Name:<br/>
+<input type="text" id="username">
+<br/>
+Password:<br>
+<input type="text" id="password" >
+<br/><br/>
+
+
+<input type="button" value="Submit" onclick="login()">
+<input type="button" value="Reset" onclick="reset()">
+
+
+<!-- <input type="button" value="new page" onclick="window.open('https://www.runoob.com/js/js-if-else.html','_blank')"> -->
+
+
+<form/> 
+<div/>
+
+<br/>
+<span id="cg">2016/12/21上午12:00:00</span>
+<script>
+	setInterval("cg.innerHTML=new Date().toLocaleString()",1000);
+</script>
+
+<body/>
+<html/>

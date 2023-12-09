@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<meta charset="utf-8">
+<<<<<<< HEAD
+    
+=======
+=======
+<meta charset="Trebuchet MS">
+>>>>>>> 2192aa0 (Login_2)
+=======
+<meta charset="Trebuchet MS">
+>>>>>>> 9413220 (Login_3)
+    <script>
+    function validateUsername(){
+     var input_window1 = document.forms["inputUser"]["emp_username"].value;
+     var input_window2 = document.forms["inputUser"]["emp_password"].value;
+     if (input_window1 == null || input_window1 == "" || input_window1.length >20){
+<<<<<<< HEAD
+<<<<<<< HEAD
+                window.location.href="LoginFailed.html";
+                return false;
+	 }                                   ///determine whether the username form is empty or invalid.
+
+     if (input_window2 == null || input_window2 == "" || input_window2.length >30){
+               window.location.href="LoginFailed.html";
+                return false;
+	 }                                   ///determine whether the username form is empty or invalid.
+     else{
+       return true; 
+     }
+   }
+
+ 
+
+    </script>
+>>>>>>> 8f084f4 (Login_1)
+<title>Warehouse Project</title>
+=======
+=======
+>>>>>>> 9413220 (Login_3)
+                alert("Please enter valid Username.")
+                return false;
+	 }                                   ///determine whether the username form is empty or invalid.
+
+     if (input_window2 == null || input_window2 == "" || input_window2.length >30){    
+                alert("Please enter valid Password.")
+                return false;
+	 }                                   ///determine whether the username form is empty or invalid.
+     if(input_window1 != "19206227"||input_window2 != "20010321"){
+                window.location.href="LoginFailed.html";
+                return false;
+   }
+     else{
+       window.location.href="LoginSuccessfully.html"; 
+       return true;
+     }
+   }
+    </script>
+
+<script type="text/javascript">
+      function reset(){
+          username.value="" && password.value="";
+              
+  </script>
+
+<title>Warehouse Project</title>
+<link rel="stylesheet" type="text/css" href="login.css">
+<<<<<<< HEAD
+>>>>>>> 2192aa0 (Login_2)
+=======
+>>>>>>> 9413220 (Login_3)
+
+ <style>
+div
+    {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+      width: 50%;
+      height: 75%;
+      overflow: auto;
+      margin: auto;
+      position: absolute;
+      top: 65%; left: 30%; bottom: 0; right: 0;
+=======
+=======
+>>>>>>> 2192aa0 (Login_2)
+=======
+>>>>>>> 9413220 (Login_3)
+      width: 100%;
+      height: 100%;
+      overflow: hidden hidden;
+      margin: 0 0 0 0;
+      position: absolute;
+     
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 8f084f4 (Login_1)
+=======
+>>>>>>> 2192aa0 (Login_2)
+=======
+>>>>>>> 9413220 (Login_3)
+	}
+ 
+ p {
+     
+     font-size:25px;
+ }
+ </style>
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+</head>
+<<<<<<< HEAD
+
+=======
+<body background="C:\WMSFront-end\resources\03.jpg" 
+style="background-repeat:no-repeat;
+background-size:cover;
+background-attachment: fixed;">
+>>>>>>> 8f084f4 (Login_1)
+    <div>
+       <h1 align = "center">Warehouse Management System</h1>
+         <p align = "center">
+         Login
+         </p>
+<<<<<<< HEAD
+           
+    </div>
+
+=======
+            <form name="inputUser" onsubmit="return validateUsername()" action="LoginSuccessfully.html" method="POST">    
+              <table align = "center", border = "2">
+                <tr>
+                  <td>Username: </td>
+                   <td>
+                    <input type="text" name="emp_username">
+                   </td>
+                </tr>
+                <tr>
+                  <td>Password: </td>
+                   <td>
+                    <input type="password" name="emp_password">
+                   </td>
+                </tr>
+                <tr>  
+                   <td colspan="2",align="center">           
+                    <button type="submit" value="Submit" >Submit</button>
+                    <input type="button" value="Reset" />
+                   </td>
+                </tr>
+               </table>
+           </form>
+    </div>
+
+ 
+
+
+
+>>>>>>> 8f084f4 (Login_1)
+=======
+=======
+>>>>>>> 9413220 (Login_3)
+</head>
+
+<body background="09.jpg" 
+style="background-repeat:no-repeat;
+background-size:cover;
+background-attachment: fixed;">
+    <div id="login_frame">
+       <h1>LOGIN</h1>
+      
+            <form name="inputUser" onsubmit="return validateUsername()" action="LoginSuccessfully.html" method="POST">    
+              <p><label class="label_input">Username </label><input type="text" name="emp_username">
+              <p><label class="label_input">Password </label><input type="password" name="emp_password">
+         
+<<<<<<< HEAD
+            <div id="login_button1">   
+              <input type="button" value="Submit" onclick="validateUsername()">
+            </div>  
+
+            <div id="login_button2">
+              <input type="button"  value="Reset" onclick="reset()">
+            </div>
+
+=======
+              <input type="button" value="Submit" id="login_button1" onclick="validateUsername()">
+              <input type="button" value="Reset" id="login_button2" onclick="reset()">
+>>>>>>> 9413220 (Login_3)
+           </form>
+    </div>
+
+
+<<<<<<< HEAD
+>>>>>>> 2192aa0 (Login_2)
+=======
+>>>>>>> 9413220 (Login_3)
+</body>
+</html>

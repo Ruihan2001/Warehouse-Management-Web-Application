@@ -1,0 +1,72 @@
+#login_frame {
+    width: 450px;
+    height: 300px;
+    padding: 13px;
+ 
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    margin-left: -200px;
+    margin-top: -200px;
+ 
+    background-color: rgba(255, 255, 255, 0.322);
+ 
+    border-radius: 10px;
+    text-align: center;
+
+    color: white;
+}
+
+.label_input {
+    font-size: 25px;
+ 
+    width: 65px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+ 
+    color: white;
+}
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9413220 (Login_3)
+#login_button1{
+
+    position:absolute;
+    left: 20%;
+    top:70%;
+    margin-top:20px;
+	width:100px;
+	height:30px;
+	font-size:20px;
+	font-weight:700;
+<<<<<<< HEAD
+	color:#fff;
+	background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+	border:none;
+=======
+	color:rgb(255, 255, 255);
+	background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+	border:0;
+>>>>>>> 9413220 (Login_3)
+	border-radius:15px;
+
+}
+
+#login_button2{
+    position:absolute;
+    left: 60%;
+    top:70%;
+    margin-top:20px;
+	width:100px;
+	height:30px;
+	font-size:20px;
+	font-weight:700;
+	color:#fff;
+	background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+	border:none;
+	border-radius:15px;
+}
+

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>Warehouse</title>
+
+    	<!--<link href="C:\Users\14127\Desktop\课设\css\bootstrap.min.css" rel="stylesheet"> -->
+
+		  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="../static/css/font-awesome.css">
+    	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+      <style> #search
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          width: 15%;
+          background-color: #f1f1f1;
+          position: fixed;
+          /* height: 100%; 侧边栏高度 */
+          /* overflow: auto; */
+        }
+
+        li a {
+          display: block;
+          color: #000;
+          padding: 8px 16px;
+          text-decoration: none;
+        }
+
+        li a.active:not(.hover){
+          background-color: #4CAF50;
+          color: white;
+        }
+
+        li a:hover:not(.active) {
+          background-color: #555;
+          color: white;
+
+        }
+        .ModalButton{
+          font-size: 25px;
+          font-family: 'Courier New', Courier, monospace;
+        }
+      </style>
+
+
+	</head>
+
+  <body>
+
+    <!--导航条-->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+			  <div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				  <span class="sr-only">Toggle navigation</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="Main_Page.html">Warehouse Management System</a>
+			  </div>
+
+			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+				  <li class="active"><a href="#">Main Page <span class="sr-only">(current)</span></a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				  <p class="navbar-text">Signed in as {{ session['username'] }}({{session['username_level']}})</p>
+					   <form class="navbar-form navbar-right">
+						   <a href="/logout">
+						  <button type="button" class="btn btn-default">Logout</button>
+						   </a>
+					   </form>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
+
+
+
+		<div class="container-fluid"></div>
+        <div class="row"></div>
+
+            <!--侧边栏-->
+            <div id='search' class="col-md-2" style="background">
+
+                <ul id="main-nav" class="nav nav-stacked">
+                  <li><a href="#home">Warehouse</a></li>
+                  <li><a herf="Financial.html"> Financial Statistics </a></li>
+                  <li><a class="active" herf="#Co"> Communication </a></li>
+                    <li><a herf="Visualization 1.html"> Visualization </a></li>
+                </ul>
+
+            </div>
+
+
+
+            <!--主界面-->
+            <div class="col-sm-7 col-md-9">
+
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h3 class="panel-title">入库出库申请</h3>
+              </div>
+              <div class="panel-body">
+
+                <form class="form-horizontal" role="form">
+              </br>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-1 control-label">商品</label>
+                  <div class="col-sm-7 col-md-7">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="输入商品名称">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-1 control-label">数量</label>
+                  <div class="col-sm-7 col-md-7">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="输入数量">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-1 control-label">仓库</label>
+                  <div class="col-sm-7 col-md-7">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="输入仓库名">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-1 control-label">管理员</label>
+                  <div class="col-sm-7 col-md-7">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="输入管理员姓名">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-1 control-label">审批人</label>
+                  <div class="col-sm-7 col-md-7">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="输入审批人姓名">
+                  </div>
+                </div>
+                    <button type='Submit' id="add_save" class="btn btn-primary">Submit</button>
+
+              </form>
+
+              </div>
+            </div>
+
+
+
+
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h3 class="panel-title">其他申请</h3>
+              </div>
+              <div class="panel-body">
+
+                <div class="form-horizontal" role="form">
+              </br>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-1 control-label">申请人</label>
+                  <div class="col-sm-7 col-md-7">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="输入姓名">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-7 col-md-9">
+                    <label for="name">其他信息</label>
+                    <textarea class="form-control" rows="8"></textarea>
+                  </div>
+                </div>
+
+                    <button type='Submit' id="add_save" class="btn btn-primary">Submit</button>
+
+
+
+              </form>
+
+              </div>
+            </div>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

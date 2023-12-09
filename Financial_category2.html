@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>Warehouse</title>
+
+    	<!--<link href="C:\Users\14127\Desktop\课设\css\bootstrap.min.css" rel="stylesheet"> -->
+
+		
+    	
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/login.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Mukta:wght@500&family=Raleway:wght@300&display=swap" rel="stylesheet">
+          
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>  
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>  
+    <script src="https://code.highcharts.com/modules/data.js"></script> 
+      
+
+      <style> #search
+        
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          width: 15%;
+          background-color:#f2f7f3; 
+          position: fixed;
+          height: 0%; /*侧边栏高度 */
+          
+          /* overflow: auto; */
+        }
+        
+        li a {
+          display: block;
+          color: #000;
+          padding: 8px 16px;
+          text-decoration: none;
+        }
+        
+        li a.active:not(.hover){
+          background-color: #4CAF50;
+          color: white;
+        }
+        
+        li a:hover:not(.active) { 
+          background-color: #555;
+          color: white;
+        
+        }
+        .ModalButton{
+          font-size: 25px;
+          font-family: 'Courier New', Courier, monospace;
+        }
+      </style>
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+	</head>
+
+  <body>
+
+    <!--导航条-->
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+			  <div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				  <span class="sr-only">Toggle navigation</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="Main_Page.html">Warehouse Management System</a>
+			  </div>
+		  
+			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+				  <li class="active"><a href="#">Main Page <span class="sr-only">(current)</span></a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				  <p class="navbar-text">Signed in as {{ session['username'] }}({{session['username_level']}})</p>
+					   <form class="navbar-form navbar-right">
+						   <a href="/logout">
+						  <button type="button" class="btn btn-default">Logout</button>
+						   </a>
+					   </form>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
+		
+
+
+		<div class="container-fluid"></div>
+        <div class="row"></div>
+        
+            <!--侧边栏-->
+            <div id='search' class="col-md-2" style="background">
+              
+                <ul id="main-nav" class="nav nav-stacked">
+                  <li><a herf="#Wa">Warehouse</a></li>
+                  <li><a class="active" href="#home"> Financial Statistics </a></li>
+                  <li><a herf="#Co"> Communication </a></li>
+                </ul>
+
+
+            </div>
+
+            
+
+            <!--主界面-->
+            <div class="col-sm-7 col-md-10"> 
+
+              <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+                <script>
+                $(function () {
+                $('#container').highcharts({
+                  chart: {
+                    type: 'column'
+                  },
+                  title: {
+                    text: '2020年各项种类预算对比'
+                  },
+                  xAxis: {
+                    type: 'category'
+                  },
+                  yAxis: {
+                          title: {
+                              text: '预算/实际支出'
+                          },
+                      },
+                  legend: {
+                    enabled: false
+                  },
+                  plotOptions: {
+                    series: {
+                      borderWidth: 0,
+                      dataLabels: {
+                        enabled: true
+                      }
+                    }
+                  },
+                  series: [{
+                    name: 'Things',
+                    colorByPoint: true,
+                    data: [{
+                      name: '1st',
+                      y: 1,
+                      drilldown: 'q1'
+                    }, {
+                      name: '2nd',
+                      y: 0.8,
+                      drilldown: 'q2'
+                    }, {
+                      name: '3rd',
+                      y: 1.4,
+                      drilldown: 'q3'
+                    }, {
+                      name: '4st',
+                      y: 0.6,
+                      drilldown: 'q4'
+                    }]
+                  }],
+                  drilldown: {
+                    series: [
+                      {
+                      id: 'q1',
+                      data: [
+                        {name: 'Fruit', id: 'Fruit', y: 4},
+                        {name: 'Seafood', id: 'Seafood', y: 2},
+                        {name: 'Digital Products', id: 'Digital Products', y: 1, },
+                        {name: 'Clothing', id: 'Clothing', y: 6},
+                        {name: 'Furniture', id: 'Furniture', y: 2},
+                        {name: 'Books', id: 'Books', y: 3},
+                        {name: 'Appliances', id: 'Appliances', y: 5},
+                        {name: 'Daily Necessities', id: 'Daily Necessities', y: 4},
+                        {name: 'Medicine', id: 'Medicine', y: 3}
+                        
+                      ]
+                    }, {
+                      id: 'q2',
+                      data: [
+                        {name: 'Fruit', id: 'Fruit', y: 4},
+                        {name: 'Seafood', id: 'Seafood', y: 2},
+                        {name: 'Digital Products', id: 'Digital Products', y: 1, },
+                        {name: 'Clothing', id: 'Clothing', y: 6},
+                        {name: 'Furniture', id: 'Furniture', y: 2},
+                        {name: 'Books', id: 'Books', y: 3},
+                        {name: 'Appliances', id: 'Appliances', y: 5},
+                        {name: 'Daily Necessities', id: 'Daily Necessities', y: 4},
+                        {name: 'Medicine', id: 'Medicine', y: 3}
+                      ]
+                    }, {
+                      id: 'q3',
+                      data: [
+                        {name: 'Fruit', id: 'Fruit', y: 4},
+                        {name: 'Seafood', id: 'Seafood', y: 2},
+                        {name: 'Digital Products', id: 'Digital Products', y: 1, },
+                        {name: 'Clothing', id: 'Clothing', y: 6},
+                        {name: 'Furniture', id: 'Furniture', y: 2},
+                        {name: 'Books', id: 'Books', y: 3},
+                        {name: 'Appliances', id: 'Appliances', y: 5},
+                        {name: 'Daily Necessities', id: 'Daily Necessities', y: 4},
+                        {name: 'Medicine', id: 'Medicine', y: 3}
+                      ]
+                    },{
+                      id: 'q4',
+                      data: [
+                        {name: 'Fruit', id: 'Fruit', y: 4},
+                        {name: 'Seafood', id: 'Seafood', y: 2},
+                        {name: 'Digital Products', id: 'Digital Products', y: 1, },
+                        {name: 'Clothing', id: 'Clothing', y: 6},
+                        {name: 'Furniture', id: 'Furniture', y: 2},
+                        {name: 'Books', id: 'Books', y: 3},
+                        {name: 'Appliances', id: 'Appliances', y: 5},
+                        {name: 'Daily Necessities', id: 'Daily Necessities', y: 4},
+                        {name: 'Medicine', id: 'Medicine', y: 3}
+                      ]
+                    }]
+                  }
+                });
+              });
+              </script>
+
+
+
+
+
+
+
+
+
+
+             
+
+
+
+
+
+            
+          
+          
+          
+            
+          
+          
+          
+          
+          
+          
+          </div>
+                
+
+
+		
+    
+  </body>
+</html>
